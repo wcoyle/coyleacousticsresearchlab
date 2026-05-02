@@ -6,14 +6,14 @@ const researchAreas = [
     href: '/research/rocket',
     tag: 'Rocket & launch acoustics',
     title: 'The sound of spaceflight',
-    desc: 'From infrasound propagation to near-field launch noise, we study how rockets shake the air — and what that data can tell us.',
+    desc: 'From near-field launch noise at Cape Canaveral to infrasound measured miles away in surrounding communities, we study how rockets shake the air — and what that data means for people who live nearby.',
     icon: '🚀',
   },
   {
     href: '/research/musical',
     tag: 'Musical acoustics',
     title: 'The physics of music and instruments',
-    desc: 'We explore how instruments produce sound, how room acoustics shape performance, and how the human ear makes sense of it all.',
+    desc: 'From clarinet mouthpiece pressure to standing waves in organ flue pipes, we investigate how instruments make sound — connecting physics, computation, and musical performance.',
     icon: '🎵',
   },
 ];
@@ -49,11 +49,13 @@ const team = [
       <div class="pi-card">
         <div class="pi-avatar">WC</div>
         <div class="pi-name">Dr. Whitney L. Coyle</div>
-        <div class="pi-title">Principal Investigator</div>
+        <div class="pi-title">Associate Professor & Chair · Department of Physics</div>
         <div class="pi-divider"></div>
         <p class="pi-bio">
-          [A sentence or two about your background, research focus, and what
-          drives your work. Why acoustics? What excites you about this field?]
+          Ph.D. in Acoustics, Penn State (NSF Graduate Research Fellow).
+          B.S. in Music (Clarinet) and Mathematics, Murray State.
+          2026 R. Bruce Lindsay Award, Acoustical Society of America.
+          I came to physics through music — and I've never left either one behind.
         </p>
         <div class="pi-links">
           <a href="mailto:wcoyle@rollins.edu" class="pi-link">Email</a>
@@ -120,12 +122,12 @@ const team = [
       </div>
       <div class="learn-grid">
         {[
-          { title: 'Field data collection',  desc: 'Deploying sensors, hydrophones, and microphone arrays in real environments.' },
-          { title: 'Signal processing',      desc: 'Python, MATLAB, spectrograms, beamforming, and acoustic analysis pipelines.' },
-          { title: 'Scientific writing',     desc: 'Authoring papers, presenting at ASA conferences, and writing grant sections.' },
-          { title: 'Research design',        desc: 'Formulating hypotheses, designing experiments, and working through uncertainty.' },
-          { title: 'ML for acoustics',       desc: 'Applying deep learning models to classification and localization problems.' },
-          { title: 'Career mentorship',      desc: 'Guidance on graduate school, industry paths, and building your research identity.' },
+          { title: 'Field data collection',  desc: 'Deploying microphone arrays, accelerometers, and DAQ systems at real launch sites and performance spaces.' },
+          { title: 'Signal processing',      desc: 'Python, MATLAB, spectral analysis, beamforming, and time-series analysis pipelines.' },
+          { title: 'Scientific writing',     desc: 'Authoring papers, presenting at ASA conferences, and contributing to real peer-reviewed publications.' },
+          { title: 'Research design',        desc: 'Formulating hypotheses, designing experiments, and working through uncertainty like a scientist.' },
+          { title: 'ML for acoustics',       desc: 'Applying neural networks to classification and detection problems in acoustic data.' },
+          { title: 'Career mentorship',      desc: 'One-on-one guidance on graduate school, industry paths, and what comes next.' },
         ].map(s => (
           <div class="learn-item">
             <div class="learn-title">{s.title}</div>
@@ -187,7 +189,7 @@ const team = [
     margin: 0 auto 14px;
   }
   .pi-name { font-size: 17px; font-weight: 700; color: var(--white); }
-  .pi-title { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .pi-title { font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--gold); margin-top: 4px; line-height: 1.5; }
   .pi-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 16px auto; }
   .pi-bio { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-bottom: 18px; font-style: italic; }
   .pi-links { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
