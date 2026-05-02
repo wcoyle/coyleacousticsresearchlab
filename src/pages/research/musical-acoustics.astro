@@ -3,30 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 
 const projects = [
   {
-    title: 'Resonance and radiation in stringed instruments',
-    status: 'Active',
-    desc: 'Investigating how the geometry and material properties of string instruments — violins, guitars, and others — shape their acoustic radiation patterns and tonal quality.',
+    title: 'Psychoacoustics of musical articulations and transients',
+    status: 'Future',
+    desc: 'How do listeners perceive and categorize clarinet articulations and transitions? We use listening tests and acoustic analysis to understand the perceptual dimensions of transients and note-to-note transitions.',
   },
   {
-    title: 'Room acoustics of performance spaces',
-    status: 'Active',
-    desc: 'Measuring and modeling the acoustic properties of concert halls and rehearsal rooms, with a focus on how room geometry affects perceived clarity, warmth, and intimacy.',
+    title: 'Programatic classification of clarient articulations',
+    status: 'Ongoing',
+    desc: 'We use MATLAB to automatically detect and classify note-to-note transitions (time and type).',
   },
-  {
-    title: 'Psychoacoustics of musical timbre',
-    status: 'Active',
-    desc: 'How do listeners perceive and categorize instrument sounds? We use listening tests and acoustic analysis to understand the perceptual dimensions of timbre.',
-  },
-  {
-    title: 'Historical instrument reconstruction',
-    status: 'Completed',
-    desc: 'A collaboration with the music department to acoustically characterize replicas of Baroque-era instruments and compare them with modern counterparts.',
-  },
+    {
+      title: 'Organ pipe geometry and effect on external wave shape',
+      status: 'Ongoing',
+      desc: 'We used ESPI and Microflown sensors to measure and visualize the external wave shape in the end-corection region of an artifically blown organ pipe.',
+    },
 ];
 
 const pubs = [
-  { title: 'Modal analysis of violin top plates using laser Doppler vibrometry', venue: 'Acta Acustica, 2025' },
-  { title: 'Reverberation time measurements in small rehearsal spaces', venue: 'J. of Building Acoustics, 2024' },
+  { title: 'Organ pipe end correction.. microflown and curve fits.', venue: 'Acta Acustica, 2025' },
+    { title: 'organ pipe end correction curve fits lauren', venue: 'POMA', 2024' },
+  { title: 'organ pipe end correction ESPI', venue: 'JASA EL', 2023' },
 ];
 ---
 
@@ -39,8 +35,8 @@ const pubs = [
       <div class="page-eyebrow">Research area</div>
       <h1 class="page-title">Musical acoustics</h1>
       <p class="page-sub">
-        Music and physics are deeply intertwined. We study the acoustic properties of 
-        musical instruments, the design of spaces where music is performed, and the 
+        Music and physics are deeply intertwined. We study the acoustic properties of
+        musical instruments, the design of spaces where music is performed, and the
         psychoacoustics of how humans perceive and make meaning from sound.
       </p>
     </div>
