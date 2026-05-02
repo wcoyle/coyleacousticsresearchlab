@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const openings = [
+  {
+    title: 'Undergraduate researcher — Summer 2026',
+    type: 'Paid position',
+    desc: 'Help process and analyze field recordings from our Space Coast measurement campaigns. Python experience preferred but not required.',
+    deadline: 'May 15, 2026',
+  },
+  {
+    title: 'Undergraduate researcher — Academic year',
+    type: 'Work-study / credit',
+    desc: 'We are seeking a motivated PhD student with interest in underwater acoustics or signal processing. Background in physics, engineering, or computer science.',
+    deadline: 'Rolling',
+  },
+];
+
+const skills = [
+  'Field data collection',
+  'Python & MATLAB',
+  'Signal processing',
+  'Scientific writing',
+  'ML for audio',
+  'Conference presentations',
+  'Research independence',
+  'Career mentorship',
+];
+---
+
+<Layout title="Join Us — CARL">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-eyebrow">From the Space Coast to Winter Park</div>
+      <h1 class="page-title">Join CARL</h1>
+      <p class="page-sub">
+        We welcome undergraduate researchers, and undergraduate researchers passionate about sound
+        who are excited about acoustics, field work, and making sense of sound.
+      </p>
+    </div>
+  </section>
+
+  <!-- OPENINGS -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 24px;">Open positions</h2>
+      <div class="openings-list">
+        {openings.map(o => (
+          <div class="opening-card">
+            <div class="opening-top">
+              <div>
+                <div class="opening-title">{o.title}</div>
+                <div class="opening-meta">
+                  <span class="tag">{o.type}</span>
+                  <span class="deadline">Deadline: {o.deadline}</span>
+                </div>
+              </div>
+            </div>
+            <p class="opening-desc">{o.desc}</p>
+            <a href="#contact" class="btn-navy" style="margin-top: 16px; display: inline-block;">Apply / inquire</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 24px;">What you'll learn</h2>
+      <div class="skills-grid">
+        {skills.map(s => (
+          <div class="skill-pill">{s}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt">
+    <div class="container contact-inner">
+      <h2 class="section-title" style="margin-bottom: 8px;">Get in touch</h2>
+      <p class="contact-sub">
+        Reach out with your CV and a short description of your interests.
+        We read every email and aim to respond within a week.
+      </p>
+      <a href="mailto:wcoyle@rollins.edu" class="btn-gold" style="margin-top: 20px; display: inline-block;">
+        wcoyle@rollins.edu
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero { background: var(--navy-dark); padding: 52px 0; }
+  .page-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .page-title { font-size: 40px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.75; }
+
+  .openings-list { display: flex; flex-direction: column; gap: 20px; }
+  .opening-card { background: var(--white); border: 0.5px solid var(--border); border-top: 3px solid var(--gold); border-radius: var(--radius-md); padding: 28px; }
+  .opening-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .opening-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .deadline { font-size: 12px; color: var(--text-muted); }
+  .opening-desc { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-pill {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .contact-inner { max-width: 560px; }
+  .contact-sub { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 8px; }
+</style>
+
+<style>
+  @media (max-width: 768px) {
+    .page-title { font-size: 30px; }
+    .skills-grid .skill-pill { width: 100%; }
+    .cta-inner { flex-direction: column !important; }
+  }
+</style>

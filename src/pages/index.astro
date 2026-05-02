@@ -1,0 +1,266 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const researchAreas = [
+  {
+    href: '/research/rocket',
+    tag: 'Rocket & launch acoustics',
+    title: 'The sound of spaceflight',
+    desc: 'From infrasound propagation to near-field launch noise, we study how rockets shake the air — and what that data can tell us.',
+    icon: '🚀',
+  },
+  {
+    href: '/research/musical',
+    tag: 'Musical acoustics',
+    title: 'The physics of music and instruments',
+    desc: 'We explore how instruments produce sound, how room acoustics shape performance, and how the human ear makes sense of it all.',
+    icon: '🎵',
+  },
+];
+
+const team = [
+  { initials: 'WC', name: 'Dr. Whitney L. Coyle', role: 'Principal Investigator' },
+  { initials: 'RA', name: '[Student Name]', role: 'Undergraduate Researcher' },
+  { initials: 'RB', name: '[Student Name]', role: 'Undergraduate Researcher' },
+  { initials: '+',  name: 'See everyone', role: 'View full team →', href: '/team' },
+];
+---
+
+<Layout title="CARL — Coyle Acoustics Research Lab">
+
+  <!-- HERO: PI + Mission -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Rollins College · Winter Park, FL</div>
+        <h1 class="hero-title">Coyle Acoustics<br/>Research Lab</h1>
+        <p class="hero-mission">
+          We study acoustics across two worlds — the raw physics of rocket launches
+          and the rich complexity of musical sound. Our goal is to train curious,
+          rigorous researchers who can hear what the data is saying.
+        </p>
+        <p class="hero-tagline">It's not noise. It's <span class="gold">data.</span></p>
+        <div class="hero-btns">
+          <a href="/research" class="btn-gold">Our research</a>
+          <a href="/join"     class="btn-outline">Join the lab</a>
+        </div>
+      </div>
+
+      <div class="pi-card">
+        <div class="pi-avatar">WC</div>
+        <div class="pi-name">Dr. Whitney L. Coyle</div>
+        <div class="pi-title">Principal Investigator</div>
+        <div class="pi-divider"></div>
+        <p class="pi-bio">
+          [A sentence or two about your background, research focus, and what
+          drives your work. Why acoustics? What excites you about this field?]
+        </p>
+        <div class="pi-links">
+          <a href="mailto:wcoyle@rollins.edu" class="pi-link">Email</a>
+          <span class="pi-sep">·</span>
+          <a href="https://www.linkedin.com/in/wcoyle/" target="_blank" class="pi-link">LinkedIn</a>
+          <span class="pi-sep">·</span>
+          <a href="https://orcid.org/0000-0002-2161-4584" target="_blank" class="pi-link">ORCID</a>
+        </div>
+        <div class="pi-dept">
+          <a href="https://www.rollins.edu/physics/" target="_blank" class="pi-dept-link">
+            Dept. of Physics · Rollins College ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH AREAS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Research areas</h2>
+        <a href="/research" class="section-link">See all projects →</a>
+      </div>
+      <div class="research-grid">
+        {researchAreas.map(area => (
+          <a href={area.href} class="research-card">
+            <div class="research-icon">{area.icon}</div>
+            <span class="tag">{area.tag}</span>
+            <h3 class="research-title">{area.title}</h3>
+            <p class="research-desc">{area.desc}</p>
+            <span class="research-cta">Explore →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">The team</h2>
+        <a href="/team" class="section-link">All members →</a>
+      </div>
+      <div class="team-grid">
+        {team.map(member => (
+          <a href={member.href ?? '/team'} class="team-card">
+            <div class="avatar">{member.initials}</div>
+            <div class="team-name">{member.name}</div>
+            <div class="team-role">{member.role}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What you'll learn</h2>
+        <a href="/join" class="section-link">Join us →</a>
+      </div>
+      <div class="learn-grid">
+        {[
+          { title: 'Field data collection',  desc: 'Deploying sensors, hydrophones, and microphone arrays in real environments.' },
+          { title: 'Signal processing',      desc: 'Python, MATLAB, spectrograms, beamforming, and acoustic analysis pipelines.' },
+          { title: 'Scientific writing',     desc: 'Authoring papers, presenting at ASA conferences, and writing grant sections.' },
+          { title: 'Research design',        desc: 'Formulating hypotheses, designing experiments, and working through uncertainty.' },
+          { title: 'ML for acoustics',       desc: 'Applying deep learning models to classification and localization problems.' },
+          { title: 'Career mentorship',      desc: 'Guidance on graduate school, industry paths, and building your research identity.' },
+        ].map(s => (
+          <div class="learn-item">
+            <div class="learn-title">{s.title}</div>
+            <div class="learn-desc">{s.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section class="join-cta">
+    <div class="container join-inner">
+      <div class="join-eyebrow">Rollins College · Liberal Arts Research</div>
+      <h2 class="join-title">Interested in joining CARL?</h2>
+      <p class="join-sub">
+        We welcome Rollins undergraduates who are curious, motivated, and ready
+        to do real science. No prior research experience required.
+      </p>
+      <div class="cta-btns">
+        <a href="/join"         class="btn-gold">Get involved</a>
+        <a href="/join#contact" class="btn-outline">Contact Dr. Coyle</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero { background: var(--navy-dark); }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 52px;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .hero-title { font-size: 40px; line-height: 1.1; color: var(--white); font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
+  .hero-mission { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 14px; max-width: 500px; }
+  .hero-tagline { font-size: 14px; font-style: italic; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+  .gold { color: var(--gold); font-style: normal; font-weight: 700; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .pi-card {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-align: center;
+  }
+  .pi-avatar {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: var(--gold);
+    margin: 0 auto 14px;
+  }
+  .pi-name { font-size: 17px; font-weight: 700; color: var(--white); }
+  .pi-title { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .pi-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 16px auto; }
+  .pi-bio { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-bottom: 18px; font-style: italic; }
+  .pi-links { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .pi-link { font-size: 12px; color: var(--gold); text-decoration: none; transition: opacity 0.2s; }
+  .pi-link:hover { opacity: 0.75; }
+  .pi-sep { color: rgba(255,255,255,0.25); font-size: 11px; }
+  .pi-dept { margin-top: 10px; }
+  .pi-dept-link { font-size: 11px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .pi-dept-link:hover { color: rgba(255,255,255,0.7); }
+
+  .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .research-card {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-top: 3px solid var(--navy); border-radius: var(--radius-md);
+    padding: 28px; text-decoration: none; display: block;
+    transition: transform 0.15s, border-top-color 0.15s;
+  }
+  .research-card:hover { transform: translateY(-2px); border-top-color: var(--gold); }
+  .research-icon { font-size: 28px; margin-bottom: 12px; }
+  .research-title { font-size: 17px; font-weight: 700; color: var(--navy); margin: 10px 0 10px; line-height: 1.35; }
+  .research-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; }
+  .research-cta { font-size: 12px; font-weight: 700; color: var(--gold-muted); letter-spacing: 0.5px; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .team-card { text-align: center; text-decoration: none; }
+  .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 12px;
+    font-size: 14px; font-weight: 700; color: var(--gold);
+    border: 2px solid var(--gold); transition: transform 0.2s;
+  }
+  .team-card:hover .avatar { transform: scale(1.06); }
+  .team-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .team-role { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  .learn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .learn-item {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 16px 18px;
+  }
+  .learn-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+  .learn-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  .join-cta { background: var(--navy); padding: 60px 0; }
+  .join-inner { text-align: center; }
+  .join-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .join-title { font-size: 30px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .join-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+  .cta-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+</style>
+
+<style>
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      padding-top: 36px;
+      padding-bottom: 36px;
+      gap: 32px;
+    }
+    .hero-title { font-size: 30px; }
+    .hero-mission { font-size: 14px; }
+    .pi-card { text-align: left; }
+    .pi-avatar { margin: 0 0 14px; }
+    .pi-links { justify-content: flex-start; }
+    .research-grid { grid-template-columns: 1fr; }
+    .learn-grid { grid-template-columns: 1fr 1fr; }
+    .join-cta { padding: 40px 0; }
+    .join-title { font-size: 24px; }
+  }
+  @media (max-width: 480px) {
+    .learn-grid { grid-template-columns: 1fr; }
+  }
+</style>

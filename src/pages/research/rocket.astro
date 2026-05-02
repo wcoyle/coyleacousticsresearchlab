@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Near-field launch noise characterization',
+    status: 'Active',
+    desc: 'Deploying microphone arrays at close range to launch vehicles at Cape Canaveral to measure and characterize the intense acoustic environment during ignition and lift-off.',
+    methods: ['Microphone arrays', 'Time-frequency analysis', 'Acoustic intensity mapping'],
+  },
+  {
+    title: 'Infrasound propagation from commercial launch vehicles',
+    status: 'Active',
+    desc: 'Studying how low-frequency sound waves generated during launch travel over long distances, including how atmospheric conditions affect propagation.',
+    methods: ['Infrasound sensors', 'Propagation modeling', 'Atmospheric data integration'],
+  },
+  {
+    title: 'ML-based acoustic event detection',
+    status: 'Active',
+    desc: 'Training convolutional neural networks to automatically detect and classify acoustic events in long field recordings from launch campaigns.',
+    methods: ['PyTorch', 'Spectrogram CNNs', 'Transfer learning'],
+  },
+];
+
+const pubs = [
+  {
+    year: '2026',
+    title: 'Infrasound propagation from commercial launch vehicles in the near field',
+    venue: 'Journal of the Acoustical Society of America',
+    doi: '#',
+  },
+  {
+    year: '2025',
+    title: 'Convolutional neural networks for infrasound event classification',
+    venue: 'Applied Acoustics',
+    doi: '#',
+  },
+];
+---
+
+<Layout title="Rocket Acoustics — CARL Research">
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <a href="/research" class="back-link">← All research areas</a>
+      <div class="hero-icon">🚀</div>
+      <div class="page-eyebrow">Rocket & launch acoustics</div>
+      <h1 class="page-title">The sound of spaceflight</h1>
+      <p class="page-sub">
+        Florida's Space Coast puts us in a unique position: world-class launch
+        facilities within driving distance, generating some of the most intense
+        acoustic events on Earth. We're out there measuring them.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 24px;">Active projects</h2>
+      <div class="projects-list">
+        {projects.map(p => (
+          <div class="project-card">
+            <div class="project-top">
+              <h3 class="project-title">{p.title}</h3>
+              <span class="status-badge">{p.status}</span>
+            </div>
+            <p class="project-desc">{p.desc}</p>
+            <div class="methods">
+              {p.methods.map(m => <span class="method-tag">{m}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Publications</h2>
+        <a href="/publications" class="section-link">All publications →</a>
+      </div>
+      {pubs.map(pub => (
+        <div class="pub-card">
+          <div class="pub-year">{pub.year}</div>
+          <div class="pub-body">
+            <div class="pub-title">{pub.title}</div>
+            <div class="pub-venue">{pub.venue}</div>
+          </div>
+          <a href={pub.doi} class="pub-doi">DOI →</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div class="container cta-inner">
+      <div>
+        <div class="cta-title">Interested in this work?</div>
+        <div class="cta-sub">We take undergrads and grad students on field campaigns.</div>
+      </div>
+      <a href="/join" class="btn-gold">Join the lab</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero { background: var(--navy-dark); padding: 48px 0 52px; }
+  .back-link { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; display: inline-block; margin-bottom: 20px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .hero-icon { font-size: 36px; margin-bottom: 12px; }
+  .page-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .page-title { font-size: 38px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.8; }
+
+  .projects-list { display: flex; flex-direction: column; gap: 16px; }
+  .project-card { background: var(--white); border: 0.5px solid var(--border); border-left: 4px solid var(--navy); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 24px 28px; }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 16px; }
+  .project-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+  .status-badge { background: #e6f7ef; color: #1a7a48; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-sm); flex-shrink: 0; }
+  .project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+  .methods { display: flex; flex-wrap: wrap; gap: 8px; }
+  .method-tag { background: var(--off-white); border: 0.5px solid var(--border); font-size: 11px; color: var(--navy); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 500; }
+
+  .pub-card { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
+  .pub-card:last-child { border-bottom: none; }
+  .pub-year { font-size: 12px; font-weight: 700; color: var(--gold-muted); min-width: 40px; }
+  .pub-body { flex: 1; }
+  .pub-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .pub-venue { font-size: 12px; color: var(--text-muted); font-style: italic; }
+  .pub-doi { font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+  .pub-doi:hover { color: var(--gold-muted); }
+
+  .cta-strip { background: var(--navy); padding: 32px 0; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .cta-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cta-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+</style>
+
+<style>
+  @media (max-width: 768px) {
+    .page-title { font-size: 28px; }
+    .project-top { flex-direction: column; gap: 8px; }
+    .pub-card { flex-wrap: wrap; gap: 8px; }
+    .cta-strip { padding: 28px 0; }
+  }
+</style>

@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    code: 'PHY XXX',
+    title: '[Course Title]',
+    desc: '[Brief description of the course — what students learn, how it connects to your research interests, what makes it distinctive.]',
+    level: 'Introductory',
+  },
+  {
+    code: 'PHY XXX',
+    title: '[Course Title]',
+    desc: '[Brief description of the course.]',
+    level: 'Intermediate',
+  },
+  {
+    code: 'PHY XXX',
+    title: '[Course Title]',
+    desc: '[Brief description of the course.]',
+    level: 'Advanced',
+  },
+];
+
+const philosophy = [
+  {
+    title: 'Science is a practice, not a body of facts',
+    desc: 'I want students to leave my courses knowing how to think like scientists — asking questions, designing tests, and sitting with uncertainty — not just knowing the answers.',
+  },
+  {
+    title: 'Everyone belongs in physics',
+    desc: 'Rollins attracts students from all kinds of backgrounds. I believe a liberal arts physics education should be genuinely accessible and should connect science to the broader human experience.',
+  },
+  {
+    title: 'Research and teaching are inseparable',
+    desc: 'The lab is an extension of the classroom. Undergraduates in CARL do real research alongside coursework, and the questions they ask in the lab feed back into how I teach.',
+  },
+];
+---
+
+<Layout title="Teaching — Dr. Whitney L. Coyle">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-eyebrow">Dr. Whitney L. Coyle · Rollins College</div>
+      <h1 class="page-title">Teaching</h1>
+      <p class="page-sub">
+        I teach physics at Rollins College, a liberal arts institution in Winter Park, FL.
+        My courses connect the fundamentals of physics to real-world phenomena —
+        including the acoustics we study in the lab.
+      </p>
+      <a href="https://www.rollins.edu/physics/" target="_blank" class="dept-badge">
+        Department of Physics · Rollins College ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- TEACHING PHILOSOPHY -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 24px;">Teaching philosophy</h2>
+      <div class="philosophy-grid">
+        {philosophy.map(p => (
+          <div class="philosophy-card">
+            <h3 class="phil-title">{p.title}</h3>
+            <p class="phil-desc">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 24px;">Courses</h2>
+      <div class="courses-list">
+        {courses.map(c => (
+          <div class="course-card">
+            <div class="course-left">
+              <div class="course-code">{c.code}</div>
+              <span class={`level-badge level-${c.level.toLowerCase()}`}>{c.level}</span>
+            </div>
+            <div class="course-right">
+              <div class="course-title">{c.title}</div>
+              <p class="course-desc">{c.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="courses-note">
+        For the current semester schedule, see the
+        <a href="https://www.rollins.edu/physics/" target="_blank" class="inline-link">
+          Rollins College Physics Department ↗
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- RESEARCH IN THE CLASSROOM -->
+  <section class="section section-alt">
+    <div class="container bridge-inner">
+      <div class="bridge-text">
+        <h2 class="section-title">Research opportunities for students</h2>
+        <p class="bridge-desc">
+          Rollins undergraduates can get involved in CARL research during the academic
+          year or over the summer. No prior research experience is needed — just
+          curiosity and a willingness to learn. Students develop real technical skills
+          and contribute to published, peer-reviewed work.
+        </p>
+        <div class="bridge-btns">
+          <a href="/join" class="btn-navy">Get involved</a>
+          <a href="/research" class="btn-outline-navy">See our research</a>
+        </div>
+      </div>
+      <div class="bridge-quote">
+        <blockquote class="quote">
+          "It's not noise. It's data."
+        </blockquote>
+        <div class="quote-attr">— CARL lab motto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="cta-strip">
+    <div class="container cta-inner">
+      <div>
+        <div class="cta-title">Questions about courses or research?</div>
+        <div class="cta-sub">Dr. Whitney L. Coyle · wcoyle@rollins.edu</div>
+      </div>
+      <div class="cta-btns">
+        <a href="mailto:wcoyle@rollins.edu" class="btn-gold">Send an email</a>
+        <a href="https://www.linkedin.com/in/wcoyle/" target="_blank" class="btn-outline">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero { background: var(--navy-dark); padding: 52px 0; }
+  .page-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .page-title { font-size: 40px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.8; margin-bottom: 20px; }
+  .dept-badge {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--gold);
+    border: 1px solid rgba(234,160,32,0.4);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .dept-badge:hover { border-color: var(--gold); }
+
+  .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .philosophy-card {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-top: 3px solid var(--gold); border-radius: var(--radius-md); padding: 24px;
+  }
+  .phil-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+  .phil-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+  .courses-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+  .course-card {
+    display: grid; grid-template-columns: 140px 1fr; gap: 24px;
+    background: var(--white); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); padding: 22px;
+    align-items: start;
+  }
+  .course-left { display: flex; flex-direction: column; gap: 8px; }
+  .course-code { font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: 0.5px; }
+  .level-badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: var(--radius-sm);
+  }
+  .level-introductory  { background: var(--gold-light); color: var(--gold-muted); }
+  .level-intermediate  { background: #e6eeff; color: #2a44a0; }
+  .level-advanced      { background: #f0e6ff; color: #5a2d91; }
+  .course-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .course-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+  .courses-note { font-size: 13px; color: var(--text-muted); }
+  .inline-link { color: var(--navy); font-weight: 600; }
+  .inline-link:hover { color: var(--gold-muted); }
+
+  .bridge-inner {
+    display: grid; grid-template-columns: 1.4fr 0.6fr;
+    gap: 48px; align-items: center;
+  }
+  .bridge-desc { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin: 14px 0 24px; }
+  .bridge-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-outline-navy {
+    background: transparent; color: var(--navy);
+    border: 1px solid rgba(27,45,107,0.3); padding: 11px 24px;
+    border-radius: var(--radius-md); font-size: 13px; cursor: pointer;
+    display: inline-block; transition: border-color 0.2s;
+    text-decoration: none;
+  }
+  .btn-outline-navy:hover { border-color: var(--navy); }
+  .quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px; color: var(--navy); font-style: italic;
+    line-height: 1.4; margin: 0 0 12px;
+    border-left: 3px solid var(--gold); padding-left: 20px;
+  }
+  .quote-attr { font-size: 12px; color: var(--text-muted); padding-left: 23px; }
+
+  .cta-strip { background: var(--navy); padding: 36px 0; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cta-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cta-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .cta-btns { display: flex; gap: 10px; }
+</style>
+
+<style>
+  @media (max-width: 768px) {
+    .page-title { font-size: 30px; }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .course-card { grid-template-columns: 1fr; gap: 10px; }
+    .course-left { flex-direction: row; align-items: center; gap: 12px; }
+    .bridge-inner { grid-template-columns: 1fr; gap: 28px; }
+    .quote { font-size: 18px; }
+    .cta-inner { flex-direction: column !important; gap: 20px; }
+    .cta-btns { flex-direction: row !important; }
+  }
+</style>

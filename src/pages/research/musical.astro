@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Acoustic analysis of bowed string instruments',
+    status: 'Active',
+    desc: 'Investigating how the shape, materials, and construction of violins and related instruments determine their tonal qualities, using laser vibrometry and acoustic measurements.',
+    methods: ['Laser Doppler vibrometry', 'Modal analysis', 'Acoustic radiation mapping'],
+  },
+  {
+    title: 'Room acoustics and performance space design',
+    status: 'Active',
+    desc: 'Measuring and modeling how the geometry and materials of rooms shape the listening experience, with a focus on spaces on campus and in the Winter Park area.',
+    methods: ['Impulse response measurement', 'Auralisation', 'Ray tracing simulation'],
+  },
+  {
+    title: 'Psychoacoustics of musical timbre',
+    status: 'Active',
+    desc: 'Exploring how listeners perceive and categorise instrumental timbres, connecting physical signal properties to human auditory experience through listening tests and analysis.',
+    methods: ['Listening experiments', 'Spectral analysis', 'Perceptual modelling'],
+  },
+];
+
+const pubs = [
+  {
+    year: '2025',
+    title: 'Vibrational modes and tonal character in carved-top string instruments',
+    venue: 'Acta Acustica',
+    doi: '#',
+  },
+  {
+    year: '2024',
+    title: 'Room acoustic measurement and auralisation in a small performance hall',
+    venue: 'Proceedings of Meetings on Acoustics',
+    doi: '#',
+  },
+];
+---
+
+<Layout title="Musical Acoustics — CARL Research">
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <a href="/research" class="back-link">← All research areas</a>
+      <div class="hero-icon">🎻</div>
+      <div class="page-eyebrow">Musical acoustics</div>
+      <h1 class="page-title">The physics of musical sound</h1>
+      <p class="page-sub">
+        Music is physics made beautiful. We study how instruments vibrate, how rooms
+        respond, and how listeners make sense of it all — bridging the gap between
+        equations and experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 24px;">Active projects</h2>
+      <div class="projects-list">
+        {projects.map(p => (
+          <div class="project-card">
+            <div class="project-top">
+              <h3 class="project-title">{p.title}</h3>
+              <span class="status-badge">{p.status}</span>
+            </div>
+            <p class="project-desc">{p.desc}</p>
+            <div class="methods">
+              {p.methods.map(m => <span class="method-tag">{m}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Publications</h2>
+        <a href="/publications" class="section-link">All publications →</a>
+      </div>
+      {pubs.map(pub => (
+        <div class="pub-card">
+          <div class="pub-year">{pub.year}</div>
+          <div class="pub-body">
+            <div class="pub-title">{pub.title}</div>
+            <div class="pub-venue">{pub.venue}</div>
+          </div>
+          <a href={pub.doi} class="pub-doi">DOI →</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div class="container cta-inner">
+      <div>
+        <div class="cta-title">Interested in this work?</div>
+        <div class="cta-sub">Musicians, physicists, and engineers all find a home in this research.</div>
+      </div>
+      <a href="/join" class="btn-gold">Join the lab</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero { background: var(--navy-dark); padding: 48px 0 52px; }
+  .back-link { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; display: inline-block; margin-bottom: 20px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .hero-icon { font-size: 36px; margin-bottom: 12px; }
+  .page-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .page-title { font-size: 38px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.8; }
+
+  .projects-list { display: flex; flex-direction: column; gap: 16px; }
+  .project-card { background: var(--white); border: 0.5px solid var(--border); border-left: 4px solid var(--gold); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 24px 28px; }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 16px; }
+  .project-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+  .status-badge { background: #e6f7ef; color: #1a7a48; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-sm); flex-shrink: 0; }
+  .project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+  .methods { display: flex; flex-wrap: wrap; gap: 8px; }
+  .method-tag { background: var(--gold-light); border: 0.5px solid rgba(200,136,26,0.2); font-size: 11px; color: var(--gold-muted); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 500; }
+
+  .pub-card { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
+  .pub-card:last-child { border-bottom: none; }
+  .pub-year { font-size: 12px; font-weight: 700; color: var(--gold-muted); min-width: 40px; }
+  .pub-body { flex: 1; }
+  .pub-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .pub-venue { font-size: 12px; color: var(--text-muted); font-style: italic; }
+  .pub-doi { font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+  .pub-doi:hover { color: var(--gold-muted); }
+
+  .cta-strip { background: var(--navy); padding: 32px 0; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .cta-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cta-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+</style>
+
+<style>
+  @media (max-width: 768px) {
+    .page-title { font-size: 28px; }
+    .project-top { flex-direction: column; gap: 8px; }
+    .pub-card { flex-wrap: wrap; gap: 8px; }
+    .cta-strip { padding: 28px 0; }
+  }
+</style>

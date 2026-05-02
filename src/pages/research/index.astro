@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const areas = [
+  {
+    href: '/research/rocket',
+    tag: 'Rocket & launch acoustics',
+    title: 'The sound of spaceflight',
+    desc: 'We measure, model, and interpret the acoustic signatures produced by rocket launches — from infrasound recorded miles away to intense near-field noise at the pad. Our field campaigns along Florida\'s Space Coast generate rich datasets that connect physics to real-world engineering and environmental questions.',
+    highlights: ['Near-field launch noise', 'Infrasound propagation', 'Acoustic fatigue', 'ML-based event detection'],
+    icon: '🚀',
+    color: 'navy',
+  },
+  {
+    href: '/research/musical',
+    tag: 'Musical acoustics',
+    title: 'The physics of musical sound',
+    desc: 'From the vibration of a violin string to the acoustics of a concert hall, we investigate how instruments produce sound and how spaces shape what listeners hear. This work blends physics, perception, and signal processing in ways that connect science to culture.',
+    highlights: ['Instrument acoustics', 'Room acoustics & auralisation', 'Psychoacoustics', 'Music information retrieval'],
+    icon: '🎵',
+    color: 'gold',
+  },
+];
+---
+
+<Layout title="Research — CARL">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-eyebrow">Coyle Acoustics Research Lab</div>
+      <h1 class="page-title">Research</h1>
+      <p class="page-sub">
+        Two distinct research programs — united by a commitment to rigorous field
+        work, careful measurement, and training the next generation of acousticians.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="areas-list">
+        {areas.map(area => (
+          <div class={`area-card area-${area.color}`}>
+            <div class="area-left">
+              <div class="area-icon">{area.icon}</div>
+              <span class="tag">{area.tag}</span>
+              <h2 class="area-title">{area.title}</h2>
+              <p class="area-desc">{area.desc}</p>
+              <a href={area.href} class="btn-navy area-btn">See projects & publications →</a>
+            </div>
+            <div class="area-right">
+              <div class="highlights-label">Research topics</div>
+              <ul class="highlights-list">
+                {area.highlights.map(h => (
+                  <li class="highlight-item">{h}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero { background: var(--navy-dark); padding: 52px 0; }
+  .page-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .page-title { font-size: 40px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; line-height: 1.75; }
+
+  .areas-list { display: flex; flex-direction: column; gap: 24px; }
+
+  .area-card {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+  }
+  .area-left { background: var(--white); padding: 36px; }
+  .area-right { padding: 36px; }
+
+  .area-navy .area-right { background: var(--navy-dark); }
+  .area-gold .area-right  { background: var(--gold-light); }
+
+  .area-icon { font-size: 32px; margin-bottom: 14px; }
+  .area-title { font-size: 22px; font-weight: 700; color: var(--navy); margin: 10px 0 14px; }
+  .area-desc { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; }
+  .area-btn { display: inline-block; }
+
+  .highlights-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .area-navy .highlights-label { color: var(--gold); }
+  .area-gold .highlights-label  { color: var(--gold-muted); }
+
+  .highlights-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .highlight-item {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 14px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .highlight-item::before { content: '—'; font-weight: 700; flex-shrink: 0; }
+
+  .area-navy .highlight-item { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.85); }
+  .area-navy .highlight-item::before { color: var(--gold); }
+
+  .area-gold .highlight-item { background: rgba(27,45,107,0.07); color: var(--navy); }
+  .area-gold .highlight-item::before { color: var(--gold-muted); }
+</style>
+
+<style>
+  @media (max-width: 768px) {
+    .area-card { grid-template-columns: 1fr; }
+    .area-right { border-top: 0.5px solid var(--border); }
+    .page-title { font-size: 30px; }
+  }
+</style>

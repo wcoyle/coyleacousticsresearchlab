@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  {
+    date: 'Apr 28, 2026',
+    badge: 'Field work',
+    title: 'Team deploys hydrophones off the coast of Brevard County',
+    body: 'Our team spent three days deploying a hydrophone array ahead of a scheduled launch window. Data collection went smoothly — analysis is ongoing.',
+  },
+  {
+    date: 'Mar 15, 2026',
+    badge: 'Publication',
+    title: 'New paper accepted in JASA',
+    body: '"Infrasound propagation from commercial launch vehicles in the near field" has been accepted to the Journal of the Acoustical Society of America. Congrats to all authors!',
+  },
+  {
+    date: 'Feb 3, 2026',
+    badge: 'Hiring',
+    title: 'Summer 2026 undergraduate positions now open',
+    body: 'We have two paid undergraduate research positions available for Summer 2026. Applications are due May 15 — see the Join Us page for details.',
+  },
+  {
+    date: 'Jan 10, 2026',
+    badge: 'Award',
+    title: 'Lab receives NSF grant for continued rocket acoustics research',
+    body: 'We are grateful to receive continued NSF support for our Space Coast measurement campaign. This funding will support two new graduate students starting in Fall 2026.',
+  },
+];
+---
+
+<Layout title="News — CARL">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-eyebrow">Coyle Acoustics Research Lab</div>
+      <h1 class="page-title">News & updates</h1>
+      <p class="page-sub">Publications, field campaigns, awards, and lab life.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="posts-list">
+        {posts.map(post => (
+          <article class="post-card">
+            <div class="post-header">
+              <span class="tag">{post.badge}</span>
+              <span class="post-date">{post.date}</span>
+            </div>
+            <h2 class="post-title">{post.title}</h2>
+            <p class="post-body">{post.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero { background: var(--navy-dark); padding: 52px 0; }
+  .page-eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .page-title { font-size: 40px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; }
+
+  .posts-list { display: flex; flex-direction: column; gap: 20px; }
+  .post-card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .post-date { font-size: 12px; color: var(--text-muted); }
+  .post-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .post-body { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+</style>
