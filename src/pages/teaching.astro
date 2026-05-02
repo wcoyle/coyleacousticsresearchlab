@@ -28,13 +28,13 @@ const signatureCourses = [
   },
 ];
 
-const mentees = [
-  { name: 'Makayle Kellison', years: '2022–present', outcome: 'Ph.D. candidate in Applied Physics, Brigham Young University', award: 'Best Student Paper Award' },
-  { name: 'Evangelina Wong', years: '2019–2022', outcome: 'Ph.D. candidate in Medical Physics, Duke University', award: '' },
-  { name: 'Jack Gabriel', years: '2016–2020', outcome: 'Ph.D. in Particle Physics, College of William & Mary', award: 'Best Student Paper Award' },
-  { name: 'Lauren Schefter', years: '2023–2025', outcome: 'M.Arch., University of Virginia', award: 'Best Student Paper Award' },
-  { name: 'Connor Kaplan', years: '2019–2022', outcome: '', award: 'Best Student Paper Award' },
-];
+# const mentees = [
+#   { name: 'Makayle Kellison', years: '2022–present', outcome: 'Ph.D. candidate in Applied Physics, Brigham Young University', award: 'Best Student Paper Award' },
+#   { name: 'Evangelina Wong', years: '2019–2022', outcome: 'Ph.D. candidate in Medical Physics, Duke University', award: '' },
+#   { name: 'Jack Gabriel', years: '2016–2020', outcome: 'Ph.D. in Particle Physics, College of William & Mary', award: 'Best Student Paper Award' },
+#   { name: 'Lauren Schefter', years: '2023–2025', outcome: 'M.Arch., University of Virginia', award: 'Best Student Paper Award' },
+#   { name: 'Connor Kaplan', years: '2019–2022', outcome: '', award: 'Best Student Paper Award' },
+# ];
 ---
 
 <Layout title="Teaching — Dr. Whitney L. Coyle">
@@ -131,29 +131,29 @@ const mentees = [
     </div>
   </section>
 
-  <!-- STUDENT MENTORSHIP -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title" style="margin-bottom: 6px;">Undergraduate research mentorship</h2>
-      <p class="section-note" style="margin-bottom: 24px;">
-        Mentored students regularly present at national ASA conferences and appear as co-authors on peer-reviewed publications.
-      </p>
-      <div class="mentees-list">
-        {mentees.map(m => (
-          <div class="mentee-card">
-            <div class="mentee-name">{m.name} <span class="mentee-years">{m.years}</span></div>
-            {m.outcome && <div class="mentee-outcome">{m.outcome}</div>}
-            {m.award && <span class="mentee-award">{m.award}</span>}
-          </div>
-        ))}
-      </div>
-      <p class="mentees-note">
-        Additional researchers include: Carter Richard, Caitlin Richard, Camille Adkison,
-        Quinn Fuse, Lucia Baquerizo, James Temple, Max Griffin, Hunter Williams,
-        Kaylie Pasternak, Laura Mason, Nick Memmelaar, Zai Mitchell.
-      </p>
-    </div>
-  </section>
+  # <!-- STUDENT MENTORSHIP -->
+  # <section class="section">
+  #   <div class="container">
+  #     <h2 class="section-title" style="margin-bottom: 6px;">Undergraduate research mentorship</h2>
+  #     <p class="section-note" style="margin-bottom: 24px;">
+  #       Mentored students regularly present at national ASA conferences and appear as co-authors on peer-reviewed publications.
+  #     </p>
+  #     <div class="mentees-list">
+  #       {mentees.map(m => (
+  #         <div class="mentee-card">
+  #           <div class="mentee-name">{m.name} <span class="mentee-years">{m.years}</span></div>
+  #           {m.outcome && <div class="mentee-outcome">{m.outcome}</div>}
+  #           {m.award && <span class="mentee-award">{m.award}</span>}
+  #         </div>
+  #       ))}
+  #     </div>
+  #     <p class="mentees-note">
+  #       Additional researchers include: Carter Richard, Caitlin Richard, Camille Adkison,
+  #       Quinn Fuse, Lucia Baquerizo, James Temple, Max Griffin, Hunter Williams,
+  #       Kaylie Pasternak, Laura Mason, Nick Memmelaar, Zai Mitchell.
+  #     </p>
+  #   </div>
+  # </section>
 
   <!-- CONTACT -->
   <section class="cta-strip">
