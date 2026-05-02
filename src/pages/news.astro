@@ -14,34 +14,35 @@ const posts = [
     badge: 'Award',
     title: 'Hunter Williams and Max Griffin receive ASA Robert W. Young Awards',
     body: '[Placeholder — add details about the scholarship, the award ceremony, and what Hunter and Max worked on. The Robert W. Young Award supports undergraduate student participation in ASA meetings.]',
-    link: 'https://acousticalsociety.org/lindsay-award/',
+    link: null,
   },
   {
     date: '2026',
     badge: 'Publication',
     title: 'New paper accepted in JASA Express Letters — Artemis community noise study',
     body: '[Placeholder — add details once published. This paper presents community-scale measurements of acoustic, ground, and structural response during rocket launches, connected to the Artemis program.]',
-    link: 'https://acousticalsociety.org/lindsay-award/',
+    link: null,
   },
   {
     date: 'Apr 28, 2026',
     badge: 'Field work',
     title: 'Team deploys sensors at Cape Canaveral ahead of launch window',
     body: 'Our team spent three days in the field deploying a multi-sensor array — including microphones, accelerometers, and ground vibration sensors — ahead of a scheduled launch window near Cape Canaveral. Data collection went smoothly and analysis is ongoing.',
-    link: 'https://acousticalsociety.org/lindsay-award/',
+    link: null,
   },
   {
     date: '2025',
     badge: 'Publication',
     title: 'New paper published in Acta Acustica on organ flue pipe acoustics',
     body: 'Coyle, W.L., Schefter, L.K., Cannaday, A.E., Griffin, M., & Rokni, E. (2025). "Comparing classical and empirical end correction models using spatial pressure measurements in flue pipes." Acta Acustica, 9, 71. Undergraduate co-authors Lauren Schefter and Max Griffin contributed to measurements and analysis.',
-    link: 'https://acousticalsociety.org/lindsay-award/',
+    link: 'https://doi.org/10.1051/aacus/2025058',
+  },
   {
     date: 'Jan 10, 2026',
     badge: 'Award',
     title: 'Lab receives Critchfield Research Grant for final phase of rocket launch noise monitoring',
     body: 'Rollins College has awarded CARL a Critchfield Research Grant to support the final phase of our rocket launch noise monitoring campaign near Cape Canaveral. This funding supports continued field work and student involvement in the project.',
-    link: 'https://acousticalsociety.org/lindsay-award/',
+    link: null,
   },
 ];
 ---
@@ -67,6 +68,7 @@ const posts = [
             </div>
             <h2 class="post-title">{post.title}</h2>
             <p class="post-body">{post.body}</p>
+            {post.link && <a href={post.link} target="_blank" class="post-link">Read more ↗</a>}
           </article>
         ))}
       </div>
@@ -87,8 +89,9 @@ const posts = [
   .post-date { font-size: 12px; color: var(--text-muted); }
   .post-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
   .post-body { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+  .post-link { font-size: 13px; font-weight: 600; color: var(--navy); text-decoration: none; display: inline-block; margin-top: 12px; }
+  .post-link:hover { color: var(--gold-muted); }
 
-  /* Color-coded badges by type */
   .tag { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; font-weight: 600; }
   .tag-award       { background: #fdf3dc; color: #c8881a; }
   .tag-publication { background: #e6eeff; color: #2a44a0; }
