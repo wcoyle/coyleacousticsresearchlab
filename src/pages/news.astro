@@ -3,28 +3,40 @@ import Layout from '../layouts/Layout.astro';
 
 const posts = [
   {
+    date: '2026',
+    badge: 'Award',
+    title: 'Dr. Coyle receives the R. Bruce Lindsay Award from the Acoustical Society of America',
+    body: 'The R. Bruce Lindsay Award is given to a member of the ASA who, within 10 years following the completion of a graduate degree, has made outstanding contributions to acoustics. Dr. Coyle is the 2026 recipient — a recognition of her research program spanning rocket launch acoustics and musical acoustics, and her commitment to undergraduate research.',
+  },
+  {
+    date: '2026',
+    badge: 'Award',
+    title: 'Hunter Williams and Max Griffin receive ASA Robert W. Young Awards',
+    body: '[Placeholder — add details about the scholarship, the award ceremony, and what Hunter and Max worked on. The Robert W. Young Award supports undergraduate student participation in ASA meetings.]',
+  },
+  {
+    date: '2026',
+    badge: 'Publication',
+    title: 'New paper accepted in JASA Express Letters — Artemis community noise study',
+    body: '[Placeholder — add details once published. This paper presents community-scale measurements of acoustic, ground, and structural response during rocket launches, connected to the Artemis program.]',
+  },
+  {
     date: 'Apr 28, 2026',
     badge: 'Field work',
-    title: 'Team deploys hydrophones off the coast of Brevard County',
-    body: 'Our team spent three days deploying a hydrophone array ahead of a scheduled launch window. Data collection went smoothly — analysis is ongoing.',
+    title: 'Team deploys sensors at Cape Canaveral ahead of launch window',
+    body: 'Our team spent three days in the field deploying a multi-sensor array — including microphones, accelerometers, and ground vibration sensors — ahead of a scheduled launch window near Cape Canaveral. Data collection went smoothly and analysis is ongoing.',
   },
   {
-    date: 'Mar 15, 2026',
+    date: '2025',
     badge: 'Publication',
-    title: 'New paper accepted in JASA',
-    body: '"Infrasound propagation from commercial launch vehicles in the near field" has been accepted to the Journal of the Acoustical Society of America. Congrats to all authors!',
-  },
-  {
-    date: 'Feb 3, 2026',
-    badge: 'Hiring',
-    title: 'Summer 2026 undergraduate positions now open',
-    body: 'We have two paid undergraduate research positions available for Summer 2026. Applications are due May 15 — see the Join Us page for details.',
+    title: 'New paper published in Acta Acustica on organ flue pipe acoustics',
+    body: 'Coyle, W.L., Schefter, L.K., Cannaday, A.E., Griffin, M., & Rokni, E. (2025). "Comparing classical and empirical end correction models using spatial pressure measurements in flue pipes." Acta Acustica, 9, 71. Undergraduate co-authors Lauren Schefter and Max Griffin contributed to measurements and analysis.',
   },
   {
     date: 'Jan 10, 2026',
     badge: 'Award',
-    title: 'Lab receives NSF grant for continued rocket acoustics research',
-    body: 'We are grateful to receive continued NSF support for our Space Coast measurement campaign. This funding will support two new graduate students starting in Fall 2026.',
+    title: 'Lab receives Critchfield Research Grant for final phase of rocket launch noise monitoring',
+    body: 'Rollins College has awarded CARL a Critchfield Research Grant to support the final phase of our rocket launch noise monitoring campaign near Cape Canaveral. This funding supports continued field work and student involvement in the project.',
   },
 ];
 ---
@@ -45,7 +57,7 @@ const posts = [
         {posts.map(post => (
           <article class="post-card">
             <div class="post-header">
-              <span class="tag">{post.badge}</span>
+              <span class={`tag tag-${post.badge.toLowerCase()}`}>{post.badge}</span>
               <span class="post-date">{post.date}</span>
             </div>
             <h2 class="post-title">{post.title}</h2>
@@ -68,6 +80,18 @@ const posts = [
   .post-card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
   .post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .post-date { font-size: 12px; color: var(--text-muted); }
-  .post-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .post-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
   .post-body { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  /* Color-coded badges by type */
+  .tag { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; font-weight: 600; }
+  .tag-award       { background: #fdf3dc; color: #c8881a; }
+  .tag-publication { background: #e6eeff; color: #2a44a0; }
+  .tag-field\ work { background: #e6f7ef; color: #1a7a48; }
+  .tag-hiring      { background: #f0e6ff; color: #5a2d91; }
+
+  @media (max-width: 768px) {
+    .page-title { font-size: 30px; }
+    .post-title { font-size: 16px; }
+  }
 </style>
