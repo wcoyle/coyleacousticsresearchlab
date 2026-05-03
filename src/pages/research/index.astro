@@ -33,6 +33,37 @@ const areas = [
     color: 'gold',
   },
 ];
+
+const grants = [
+  {
+    funder: 'National Science Foundation',
+    title: 'NSF RUI: Undergraduate Research in Acoustics',
+    role: 'Principal Investigator',
+    total: '$750,000',
+    years: '2021–2024',
+  },
+  {
+    funder: 'National Science Foundation',
+    title: 'NSF SPACE Supplement: Undergraduate Research in Acoustics',
+    role: 'Principal Investigator',
+    total: '$76,623',
+    years: '2023–2024',
+  },
+  {
+    funder: 'City of Cape Canaveral',
+    title: 'Rocket Noise Measurement Campaign',
+    role: 'Principal Investigator',
+    total: '$13,000',
+    years: '2025–2026',
+  },
+  {
+    funder: 'Rollins College',
+    title: 'Critchfield Research Grant: Final Phase of Rocket Launch Noise Monitoring',
+    role: 'Principal Investigator',
+    total: '$5,000',
+    years: '2026',
+  },
+];
 ---
 
 <Layout title="Research — CARL">
@@ -67,6 +98,29 @@ const areas = [
                   <li class="highlight-item">{h}</li>
                 ))}
               </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GRANTS & FUNDING -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 6px;">Grants & funding</h2>
+      <p class="grants-sub">External and internal funding supporting CARL research and undergraduate participation.</p>
+      <div class="grants-list">
+        {grants.map(g => (
+          <div class="grant-card">
+            <div class="grant-left">
+              <div class="grant-funder">{g.funder}</div>
+              <div class="grant-title">{g.title}</div>
+              <div class="grant-role">{g.role}</div>
+            </div>
+            <div class="grant-right">
+              <div class="grant-total">{g.total}</div>
+              <div class="grant-years">{g.years}</div>
             </div>
           </div>
         ))}
@@ -131,6 +185,25 @@ const areas = [
 
   .area-gold .highlight-item { background: rgba(27,45,107,0.07); color: var(--navy); }
   .area-gold .highlight-item::before { color: var(--gold-muted); }
+
+  /* GRANTS */
+  .grants-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; font-style: italic; }
+  .grants-list { display: flex; flex-direction: column; gap: 0; }
+  .grant-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .grant-card:last-child { border-bottom: none; }
+  .grant-funder { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 5px; }
+  .grant-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
+  .grant-role { font-size: 12px; color: var(--text-muted); }
+  .grant-right { text-align: right; flex-shrink: 0; }
+  .grant-total { font-size: 18px; font-weight: 700; color: var(--navy); }
+  .grant-years { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
 </style>
 
 <style>
@@ -138,5 +211,7 @@ const areas = [
     .area-card { grid-template-columns: 1fr; }
     .area-right { border-top: 0.5px solid var(--border); }
     .page-title { font-size: 30px; }
+    .grant-card { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .grant-right { text-align: left; }
   }
 </style>

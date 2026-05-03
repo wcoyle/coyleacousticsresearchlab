@@ -249,4 +249,15 @@ const inProgress = [
     .pub-row { flex-wrap: wrap; }
     .pub-year { min-width: auto; }
   }
+  .press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .press-card {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-left: 3px solid var(--navy); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 20px; text-decoration: none; display: flex; flex-direction: column; gap: 10px;
+    transition: border-left-color 0.15s;
+  }
+  .press-card:hover { border-left-color: var(--gold); }
+  .press-outlet { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-muted); }
+  .press-title { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.45; flex: 1; }
+  .press-cta { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 </style>

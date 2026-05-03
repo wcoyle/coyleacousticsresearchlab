@@ -20,8 +20,10 @@ const researchAreas = [
 
 const team = [
   { initials: 'WC', name: 'Dr. Whitney L. Coyle', role: 'Principal Investigator' },
-  { initials: 'RA', name: '[Student Name]', role: 'Undergraduate Researcher' },
-  { initials: 'RB', name: '[Student Name]', role: 'Undergraduate Researcher' },
+  { initials: 'HW', name: 'Hunter', role: 'Senior Physics Major (Math minor), Team Lead' },
+  { initials: 'NM', name: 'Nick', role: 'Sophomore Physics Major (Math double major)'  },
+    { initials: 'LM', name: 'Laura', role: 'Junior Physics Major (Studio Art minor)'  },
+      { initials: 'ZM', name: 'Zai', role: 'Sophomore Physics Major (Chemistry minor)'  },
   { initials: '+',  name: 'See everyone', role: 'View full team →', href: '/team' },
 ];
 ---
@@ -90,6 +92,32 @@ const team = [
             <span class="research-cta">Explore →</span>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- IN THE NEWS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">In the news</h2>
+      </div>
+      <div class="press-grid">
+        <a href="https://www.thesandspur.org/waveforms-and-wavelengths-navigating-the-spectrum-of-physics-at-rollins/" target="_blank" class="press-card">
+          <div class="press-outlet">The Sandspur · 2026</div>
+          <div class="press-title">"Waveforms and Wavelengths: Navigating the Spectrum of Physics at Rollins"</div>
+          <div class="press-cta">Read article ↗</div>
+        </a>
+        <a href="https://www.rollins.edu/college-of-liberal-arts/news/what-its-like-to-partner-with-your-professor/" target="_blank" class="press-card">
+          <div class="press-outlet">Rollins College News · 2025</div>
+          <div class="press-title">"What It's Like to Partner with Your Professor"</div>
+          <div class="press-cta">Read article ↗</div>
+        </a>
+        <a href="https://www.rollins.edu/college-of-liberal-arts/news/cool-class-physics-for-future-presidents/" target="_blank" class="press-card">
+          <div class="press-outlet">Rollins College News · 2024</div>
+          <div class="press-title">"Cool Class: Physics for Future Presidents"</div>
+          <div class="press-cta">Read article ↗</div>
+        </a>
       </div>
     </div>
   </section>
@@ -261,6 +289,7 @@ const team = [
     .learn-grid { grid-template-columns: 1fr 1fr; }
     .join-cta { padding: 40px 0; }
     .join-title { font-size: 24px; }
+    .press-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .learn-grid { grid-template-columns: 1fr; }
