@@ -226,12 +226,25 @@ object-position: center 15%;
 
 <style>
   @media (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      padding-top: 36px;
-      padding-bottom: 36px;
-      gap: 32px;
-    }
+.hero-inner {
+  grid-template-columns: 1fr !important;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  gap: 24px;
+}
+.pi-card {
+  width: 100%;
+  max-width: 100%;
+}
+.pi-photo-wrap {
+  height: 200px !important;
+}
+.pi-body {
+  text-align: center;
+}
+.pi-links {
+  justify-content: center;
+}
     .hero-title { font-size: 30px; }
     .hero-mission { font-size: 14px; }
     .pi-card { text-align: left; }
