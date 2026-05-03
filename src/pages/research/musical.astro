@@ -3,59 +3,100 @@ import Layout from '../../layouts/Layout.astro';
 
 const projects = [
   {
-    title: 'Acoustic analysis of bowed string instruments',
+    title: 'Clarinet acoustics — playing frequency prediction and mouthpiece pressure analysis',
     status: 'Active',
-    desc: 'Investigating how the shape, materials, and construction of violins and related instruments determine their tonal qualities, using laser vibrometry and acoustic measurements.',
-    methods: ['Laser Doppler vibrometry', 'Modal analysis', 'Acoustic radiation mapping'],
+    desc: 'We study the physics of clarinet sound production — from computational prediction of playing frequencies to real-time measurement of mouthpiece pressure during performance. This work connects classical acoustics theory to data collected from real players.',
+    methods: ['Mouthpiece pressure sensors', 'MATLAB modeling', 'Computational simulation'],
   },
   {
-    title: 'Room acoustics and performance space design',
+    title: 'Automatic detection of articulation and legato transitions',
     status: 'Active',
-    desc: 'Measuring and modeling how the geometry and materials of rooms shape the listening experience, with a focus on spaces on campus and in the Winter Park area.',
-    methods: ['Impulse response measurement', 'Auralisation', 'Ray tracing simulation'],
+    desc: 'Using machine learning and signal processing to automatically identify tongued and slurred note transitions in clarinet and other wind instrument recordings. A collaboration connecting acoustics, music performance, and data science.',
+    methods: ['ML classification', 'Signal processing', 'Audio feature extraction'],
   },
   {
-    title: 'Psychoacoustics of musical timbre',
+    title: 'Organ flue pipe acoustics and end correction modeling',
     status: 'Active',
-    desc: 'Exploring how listeners perceive and categorise instrumental timbres, connecting physical signal properties to human auditory experience through listening tests and analysis.',
-    methods: ['Listening experiments', 'Spectral analysis', 'Perceptual modelling'],
+    desc: 'Measuring acoustic standing wave behavior inside organ flue pipes and comparing classical vs. empirical end correction models using spatial pressure data. Recent work published in Acta Acustica with undergraduate co-authors.',
+    methods: ['Spatial pressure measurement', 'Standing wave analysis', 'End correction modeling'],
+  },
+  {
+    title: 'Flow visualization inside musical instruments',
+    status: 'Active',
+    desc: 'Using speckle imaging (TESPI) to visualize airflow inside and around open pipes and wind instruments — making the invisible physics of sound production visible.',
+    methods: ['TESPI speckle imaging', 'Flow visualization', 'Collaboration with Rollins Physics'],
   },
 ];
 
 const pubs = [
   {
     year: '2025',
-    title: 'Vibrational modes and tonal character in carved-top string instruments',
-    venue: 'Acta Acustica',
-    doi: '#',
+    authors: 'Coyle, W.L., Schefter, L.K.*, Cannaday, A.E., Griffin, M.*, & Rokni, E.',
+    title: 'Comparing classical and empirical end correction models using spatial pressure measurements in flue pipes.',
+    venue: 'Acta Acustica, 9, 71.',
+    doi: 'https://doi.org/10.1051/aacus/2025058',
+  },
+  {
+    year: '2025',
+    authors: 'Griffin, M.*, Coyle, W.L., & Pàmies-Vilà, M.',
+    title: 'Automated detection of legato transitions.',
+    venue: 'Proceedings of Meetings on Acoustics',
+    doi: null,
   },
   {
     year: '2024',
-    title: 'Room acoustic measurement and auralisation in a small performance hall',
+    authors: 'Schefter, L.K.*, Coyle, W.L., Rokni, E., & Cannaday, A.',
+    title: 'Measuring acoustic standing wave behavior in a flue pipe.',
     venue: 'Proceedings of Meetings on Acoustics',
-    doi: '#',
+    doi: null,
+  },
+  {
+    year: '2023',
+    authors: 'Moore, T.R., Kellison, M.S.*, Coyle, W.L.',
+    title: 'TESPI and visualizing flow in and around open pipes.',
+    venue: 'JASA Express Letters',
+    doi: null,
+  },
+  {
+    year: '2021',
+    authors: 'Coyle, W.L., Wong, E.Y.*, Gabriel, J.D.*, Kaplan, C.N.*',
+    title: 'Computational determination of transition times using measured mouthpiece pressure.',
+    venue: 'JASA Express Letters',
+    doi: 'https://doi.org/10.1121/10.0005352',
+  },
+  {
+    year: '2019',
+    authors: 'Coyle, W.L., Gabriel, J.D.*',
+    title: 'Automatic detection of tongued and slurred note transitions in clarinet playing.',
+    venue: 'Journal of the Acoustical Society of America, 146(3)',
+    doi: 'https://doi.org/10.1121/1.5127848',
+  },
+  {
+    year: '2015',
+    authors: 'Coyle, W.L., Guillemain, P., Kergomard, J., & Dalmont, J.P.',
+    title: 'Predicting playing frequencies for clarinets: comparison between numerical simulations and analytic formulas.',
+    venue: 'Journal of the Acoustical Society of America, 138',
+    doi: 'https://doi.org/10.1121/1.4935360',
   },
 ];
 ---
 
 <Layout title="Musical Acoustics — CARL Research">
 
-  <!-- HERO -->
   <section class="page-hero">
     <div class="container">
       <a href="/research" class="back-link">← All research areas</a>
-      <div class="hero-icon">🎻</div>
+      <div class="hero-icon">🎵</div>
       <div class="page-eyebrow">Musical acoustics</div>
       <h1 class="page-title">The physics of musical sound</h1>
       <p class="page-sub">
-        Music is physics made beautiful. We study how instruments vibrate, how rooms
-        respond, and how listeners make sense of it all — bridging the gap between
-        equations and experience.
+        Music is physics made beautiful. We study how instruments produce sound —
+        from the pressure dynamics inside a clarinet mouthpiece to standing waves
+        in organ flue pipes — connecting rigorous measurement to musical experience.
       </p>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title" style="margin-bottom: 24px;">Active projects</h2>
@@ -76,32 +117,37 @@ const pubs = [
     </div>
   </section>
 
-  <!-- PUBLICATIONS -->
   <section class="section">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Publications</h2>
         <a href="/publications" class="section-link">All publications →</a>
       </div>
-      {pubs.map(pub => (
-        <div class="pub-card">
-          <div class="pub-year">{pub.year}</div>
-          <div class="pub-body">
-            <div class="pub-title">{pub.title}</div>
-            <div class="pub-venue">{pub.venue}</div>
+      <div class="pubs-list">
+        {pubs.map(pub => (
+          <div class="pub-card">
+            <div class="pub-year">{pub.year}</div>
+            <div class="pub-body">
+              <div class="pub-authors">{pub.authors}</div>
+              <div class="pub-title">{pub.title}</div>
+              <div class="pub-venue">{pub.venue}</div>
+            </div>
+            {pub.doi
+              ? <a href={pub.doi} target="_blank" class="pub-doi">DOI ↗</a>
+              : <span class="pub-doi-empty"></span>
+            }
           </div>
-          <a href={pub.doi} class="pub-doi">DOI →</a>
-        </div>
-      ))}
+        ))}
+      </div>
+      <p class="pubs-note">* denotes undergraduate co-author</p>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-strip">
     <div class="container cta-inner">
       <div>
         <div class="cta-title">Interested in this work?</div>
-        <div class="cta-sub">Musicians, physicists, and engineers all find a home in this research.</div>
+        <div class="cta-sub">Musicians, physicists, and engineers all find a home here.</div>
       </div>
       <a href="/join" class="btn-gold">Join the lab</a>
     </div>
@@ -127,26 +173,29 @@ const pubs = [
   .methods { display: flex; flex-wrap: wrap; gap: 8px; }
   .method-tag { background: var(--gold-light); border: 0.5px solid rgba(200,136,26,0.2); font-size: 11px; color: var(--gold-muted); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 500; }
 
-  .pub-card { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
-  .pub-card:last-child { border-bottom: none; }
-  .pub-year { font-size: 12px; font-weight: 700; color: var(--gold-muted); min-width: 40px; }
+  .pubs-list { display: flex; flex-direction: column; }
+  .pub-card { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
+  .pub-card:last-of-type { border-bottom: none; }
+  .pub-year { font-size: 12px; font-weight: 700; color: var(--gold-muted); min-width: 38px; padding-top: 2px; flex-shrink: 0; }
   .pub-body { flex: 1; }
-  .pub-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .pub-authors { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
+  .pub-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
   .pub-venue { font-size: 12px; color: var(--text-muted); font-style: italic; }
-  .pub-doi { font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+  .pub-doi { font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0; text-decoration: none; padding-top: 2px; }
   .pub-doi:hover { color: var(--gold-muted); }
+  .pub-doi-empty { width: 40px; flex-shrink: 0; }
+  .pubs-note { font-size: 12px; color: var(--text-muted); margin-top: 16px; font-style: italic; }
 
   .cta-strip { background: var(--navy); padding: 32px 0; }
   .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .cta-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
   .cta-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
-</style>
 
-<style>
   @media (max-width: 768px) {
     .page-title { font-size: 28px; }
     .project-top { flex-direction: column; gap: 8px; }
-    .pub-card { flex-wrap: wrap; gap: 8px; }
+    .pub-card { flex-wrap: wrap; }
+    .cta-inner { flex-direction: column; }
     .cta-strip { padding: 28px 0; }
   }
 </style>
