@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const pi = {
   initials: 'WC',
   name: 'Dr. Whitney L. Coyle',
-  role: 'Associate Professor of Physics & Chair · Principal Investigator',
+  role: 'Associate Professor of Physics· Principal Investigator',
   bio: 'Ph.D. in Acoustics, Penn State (NSF Graduate Research Fellow). B.S. in Music (Clarinet) and Mathematics, Murray State. 2026 R. Bruce Lindsay Award, Acoustical Society of America. I came to physics through music — and I\'ve never left either one behind.',
   email: 'wcoyle@rollins.edu',
 };
@@ -17,15 +17,15 @@ const members = [
 ];
 
 const alumni = [
-  { name: 'Max Griffin', year: '2023-25', now: '' },
-  { name: 'Makayle Kellison', year: '2022-24', now: 'Ph.D. candidate in Applied Physics, Brigham Young University' },
-  { name: 'Lauren Schefter', year: '2023-25', now: 'Pursuing M.Arch., University of Virginia' },
-  { name: 'Evangelina Wong', year: '2020-22', now: 'Ph.D. candidate in Medical Physics, Duke University' },
-  { name: 'Connor Kaplan', year: '2020-22', now: '' },
-  { name: 'Jack Gabriel', year: '2018-21', now: 'Ph.D. in Particle Physics, College of William & Mary' },
-  { name: 'Camille Adkison', year: '2018-19', now: '' },
+  { name: 'Max Griffin', year: '2023–25', now: '' },
+  { name: 'Makayle Kellison', year: '2022–24', now: 'Ph.D. candidate in Applied Physics, Brigham Young University' },
+  { name: 'Lauren Schefter', year: '2023–25', now: 'Pursuing M.Arch., University of Virginia' },
+  { name: 'Evangelina Wong', year: '2020–22', now: 'Ph.D. candidate in Medical Physics, Duke University' },
+  { name: 'Connor Kaplan', year: '2020–22', now: '' },
+  { name: 'Jack Gabriel', year: '2018–21', now: 'Ph.D. in Particle Physics, College of William &amp; Mary' },
+  { name: 'Camille Adkison', year: '2018–19', now: '' },
   { name: 'James Temple', year: '2022', now: '' },
-  { name: 'Carter Richard', year: '2016-18', now: '' },
+  { name: 'Carter Richard', year: '2016–18', now: '' },
   { name: 'Caitlin Richard', year: '2016', now: '' },
 ];
 ---
@@ -96,7 +96,60 @@ const alumni = [
     </div>
   </section>
 
+  <!-- LAB LIFE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 6px;">Lab life</h2>
+      <p class="lab-sub">Field work, launches, and life in CARL.</p>
+      <div class="slider-wrap">
+        <div class="slider" id="slider">
+          <div class="slide active">
+            <img src="/images/lab-photo-1.jpg" alt="Students deploying sensors at Cape Canaveral" class="slide-img" />
+            <div class="slide-caption">Field deployment, Cape Canaveral · 2025</div>
+          </div>
+          <div class="slide">
+            <img src="/images/lab-photo-2.jpg" alt="Lab work at Rollins" class="slide-img" />
+            <div class="slide-caption">In the lab at Rollins · 2025</div>
+          </div>
+          <div class="slide">
+            <img src="/images/lab-photo-3.jpg" alt="CARL team at a launch" class="slide-img" />
+            <div class="slide-caption">Watching the launch · Cape Canaveral · 2025</div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="prev" aria-label="Previous photo">←</button>
+          <div class="slider-dots" id="dots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+          </div>
+          <button class="slider-btn" id="next" aria-label="Next photo">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  document.getElementById('prev')?.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next')?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.index))));
+
+  setInterval(() => goTo(current + 1), 5000);
+</script>
 
 <style>
   .page-hero { background: var(--navy-dark); padding: 52px 0; }
@@ -134,14 +187,27 @@ const alumni = [
   .alumni-name { font-size: 14px; font-weight: 600; color: var(--navy); }
   .alumni-year { font-weight: 400; color: var(--text-muted); }
   .alumni-now { font-size: 13px; color: var(--text-muted); text-align: right; }
-</style>
 
-<style>
+  .lab-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; font-style: italic; }
+  .slider-wrap { max-width: 700px; margin: 0 auto; }
+  .slider { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--navy-dark); }
+  .slide { display: none; }
+  .slide.active { display: block; }
+  .slide-img { width: 100%; height: 420px; object-fit: cover; object-position: center; display: block; }
+  .slide-caption { padding: 14px 20px; font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 0.3px; background: var(--navy-dark); }
+  .slider-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; }
+  .slider-btn { background: var(--white); border: 0.5px solid var(--border); color: var(--navy); font-size: 16px; font-weight: 700; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+  .slider-btn:hover { background: var(--navy); color: var(--white); }
+  .slider-dots { display: flex; gap: 8px; align-items: center; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: background 0.2s; padding: 0; }
+  .dot.active { background: var(--gold); }
+
   @media (max-width: 768px) {
     .page-title { font-size: 30px; }
     .pi-card { flex-direction: column; }
     .member-grid { grid-template-columns: 1fr 1fr; }
     .alumni-item { flex-direction: column; align-items: flex-start; gap: 3px; }
     .alumni-now { text-align: left; }
+    .slide-img { height: 260px; }
   }
 </style>
