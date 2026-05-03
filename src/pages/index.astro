@@ -32,7 +32,7 @@ const researchAreas = [
           and the rich complexity of musical sound. Our goal is to train curious,
           rigorous researchers who can hear what the data is saying.
         </p>
-        <p class="hero-tagline">It's not <span class="gold">noise. It's <span class="gold">data.</span></p>
+        <p class="hero-tagline"><span class="gold">It's not noise. It's data.</span></p>
         <div class="hero-btns">
           <a href="/research" class="btn-gold">Our research</a>
           <a href="/join"     class="btn-outline">Join the lab</a>
@@ -40,7 +40,7 @@ const researchAreas = [
       </div>
 
       <div class="pi-card">
-        <div class="pi-avatar">WC</div>
+<img src="/images/whitney-coyle.jpg" alt="Dr. Whitney L. Coyle" class="pi-avatar-img" />
         <div class="pi-name">Dr. Whitney L. Coyle</div>
         <div class="pi-title">Associate Professor &amp; Chair, Department of Physics</div>
         <div class="pi-divider"></div>
@@ -157,12 +157,11 @@ const researchAreas = [
     padding: 28px;
     text-align: center;
   }
-  .pi-avatar {
-    width: 68px; height: 68px; border-radius: 50%;
-    background: var(--navy); border: 2px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 700; color: var(--gold);
-    margin: 0 auto 14px;
+.pi-avatar-img {
+    width: 90px; height: 90px; border-radius: 50%;
+    object-fit: cover; object-position: center top;
+    border: 2px solid var(--gold);
+    margin: 0 auto 14px; display: block;
   }
   .pi-name { font-size: 17px; font-weight: 700; color: var(--white); }
   .pi-title { font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--gold); margin-top: 4px; line-height: 1.5; }
