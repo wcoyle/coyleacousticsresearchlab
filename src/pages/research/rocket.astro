@@ -1,46 +1,66 @@
+
 ---
 import Layout from '../../layouts/Layout.astro';
 
 const projects = [
   {
-    title: 'Near-field launch noise characterization',
+    title: 'Community-scale acoustic, ground, and structural response during rocket launches',
     status: 'Active',
-    desc: 'Deploying microphone arrays at close range to launch vehicles at Cape Canaveral to measure and characterize the intense acoustic environment during ignition and lift-off.',
-    methods: ['Microphone arrays', 'Time-frequency analysis', 'Acoustic intensity mapping'],
+    desc: 'Designing and deploying multi-sensor field measurement systems — microphones, accelerometers, and structural sensors — at community distances near Cape Canaveral to understand how launch noise affects the surrounding environment. A paper from this work is currently submitted to JASA Express Letters.',
+    methods: ['Multi-sensor arrays', 'Ground vibration measurement', 'Structural response', 'NI DAQ systems'],
   },
   {
-    title: 'Infrasound propagation from commercial launch vehicles',
+    title: 'Frequency weighting and community noise metrics for rocket launch assessment',
     status: 'Active',
-    desc: 'Studying how low-frequency sound waves generated during launch travel over long distances, including how atmospheric conditions affect propagation.',
-    methods: ['Infrasound sensors', 'Propagation modeling', 'Atmospheric data integration'],
+    desc: 'Evaluating how standard aircraft noise metrics apply — and where they fall short — when used to assess rocket launch noise in surrounding communities. Presented at ASA Honolulu 2025.',
+    methods: ['Community noise metrics', 'Frequency weighting', 'RUMBLE modeling', 'Spaceport noise prediction'],
   },
   {
-    title: 'ML-based acoustic event detection',
+    title: 'Aeroacoustic analysis of NASA\'s Space Launch System — Artemis-I',
     status: 'Active',
-    desc: 'Training convolutional neural networks to automatically detect and classify acoustic events in long field recordings from launch campaigns.',
-    methods: ['PyTorch', 'Spectrogram CNNs', 'Transfer learning'],
+    desc: 'Far-field acoustic measurements and aeroacoustic analysis of the Artemis-I launch, including application of aircraft noise metrics to characterize the SLS acoustic environment.',
+    methods: ['Far-field measurement', 'Larson Davis SLM', 'Aeroacoustic analysis', 'AIAA methods'],
   },
 ];
 
 const pubs = [
   {
     year: '2026',
-    title: 'Infrasound propagation from commercial launch vehicles in the near field',
-    venue: 'Journal of the Acoustical Society of America',
-    doi: '#',
+    title: 'Community-scale measurements of acoustic, ground, and structural response during rocket launches',
+    authors: 'Coyle, W.L., et al.',
+    venue: 'Submitted to JASA Express Letters',
+    doi: null,
+    inProgress: true,
+  },
+  {
+    year: '2023',
+    title: 'Space Launch System acoustics: Far-field noise measurements of the Artemis-I launch',
+    authors: 'Gee, K.L., Hart, G.W., Cunningham, C.F., ..., Coyle, W.L., Kellison, M.S.*, & Kuffskie, M.J.*',
+    venue: 'JASA Express Letters',
+    doi: 'https://doi.org/10.1121/10.0017571',
+    inProgress: false,
   },
   {
     year: '2025',
-    title: 'Convolutional neural networks for infrasound event classification',
-    venue: 'Applied Acoustics',
-    doi: '#',
+    title: 'Evaluating frequency weighting in community noise metrics for rocket launch assessment',
+    authors: 'Coyle, W.L., Williams, H.N.*, Gee, K.L., Kellison, M.S.*, & Hart, G.W.',
+    venue: 'Proceedings of Meetings on Acoustics',
+    doi: null,
+    inProgress: false,
+  },
+  {
+    year: '2024',
+    title: 'Aeroacoustic analysis of NASA\'s Space Launch System Artemis-I mission',
+    authors: 'Kellison, M.*, Gee, K.L., Coyle, W.L.',
+    venue: 'AIAA',
+    doi: 'https://doi.org/10.2514/6.2024-3033',
+    inProgress: false,
   },
 ];
 ---
 
 <Layout title="Rocket Acoustics — CARL Research">
 
-  <!-- HERO -->
   <section class="page-hero">
     <div class="container">
       <a href="/research" class="back-link">← All research areas</a>
@@ -50,12 +70,12 @@ const pubs = [
       <p class="page-sub">
         Florida's Space Coast puts us in a unique position: world-class launch
         facilities within driving distance, generating some of the most intense
-        acoustic events on Earth. We're out there measuring them.
+        acoustic events on Earth. We measure them — at the pad, in the community,
+        and everywhere in between.
       </p>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title" style="margin-bottom: 24px;">Active projects</h2>
@@ -76,32 +96,36 @@ const pubs = [
     </div>
   </section>
 
-  <!-- PUBLICATIONS -->
   <section class="section">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Publications</h2>
         <a href="/publications" class="section-link">All publications →</a>
       </div>
-      {pubs.map(pub => (
-        <div class="pub-card">
-          <div class="pub-year">{pub.year}</div>
-          <div class="pub-body">
-            <div class="pub-title">{pub.title}</div>
-            <div class="pub-venue">{pub.venue}</div>
+      <div class="pubs-list">
+        {pubs.map(pub => (
+          <div class={`pub-card ${pub.inProgress ? 'pub-progress' : ''}`}>
+            <div class="pub-year">{pub.year}</div>
+            <div class="pub-body">
+              <div class="pub-title">{pub.title}</div>
+              <div class="pub-authors">{pub.authors}</div>
+              <div class="pub-venue">{pub.inProgress ? '⟳ ' : ''}{pub.venue}</div>
+            </div>
+            {pub.doi
+              ? <a href={pub.doi} target="_blank" class="pub-doi">DOI ↗</a>
+              : <span class="pub-doi-placeholder"></span>
+            }
           </div>
-          <a href={pub.doi} class="pub-doi">DOI →</a>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-strip">
     <div class="container cta-inner">
       <div>
         <div class="cta-title">Interested in this work?</div>
-        <div class="cta-sub">We take undergrads and grad students on field campaigns.</div>
+        <div class="cta-sub">Rollins undergraduates are welcome — no prior experience needed.</div>
       </div>
       <a href="/join" class="btn-gold">Join the lab</a>
     </div>
@@ -127,14 +151,18 @@ const pubs = [
   .methods { display: flex; flex-wrap: wrap; gap: 8px; }
   .method-tag { background: var(--off-white); border: 0.5px solid var(--border); font-size: 11px; color: var(--navy); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 500; }
 
-  .pub-card { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
+  .pubs-list { display: flex; flex-direction: column; }
+  .pub-card { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
   .pub-card:last-child { border-bottom: none; }
-  .pub-year { font-size: 12px; font-weight: 700; color: var(--gold-muted); min-width: 40px; }
+  .pub-progress { opacity: 0.75; }
+  .pub-year { font-size: 12px; font-weight: 700; color: var(--gold-muted); min-width: 38px; padding-top: 2px; }
   .pub-body { flex: 1; }
-  .pub-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .pub-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
+  .pub-authors { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
   .pub-venue { font-size: 12px; color: var(--text-muted); font-style: italic; }
-  .pub-doi { font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+  .pub-doi { font-size: 12px; font-weight: 700; color: var(--navy); flex-shrink: 0; text-decoration: none; padding-top: 2px; }
   .pub-doi:hover { color: var(--gold-muted); }
+  .pub-doi-placeholder { width: 40px; flex-shrink: 0; }
 
   .cta-strip { background: var(--navy); padding: 32px 0; }
   .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
@@ -148,5 +176,6 @@ const pubs = [
     .project-top { flex-direction: column; gap: 8px; }
     .pub-card { flex-wrap: wrap; gap: 8px; }
     .cta-strip { padding: 28px 0; }
+    .cta-inner { flex-direction: column; }
   }
 </style>
