@@ -8,13 +8,10 @@ const areas = [
     title: 'The sound of spaceflight',
     desc: 'We measure and interpret the acoustic signatures of rocket launches — from near-field noise at the pad to infrasound recorded miles away in surrounding communities. Our field campaigns along Florida\'s Space Coast have included measurements of NASA\'s Space Launch System Artemis-I mission and commercial launch vehicles at Cape Canaveral, generating datasets that connect physics to real engineering and environmental questions.',
     highlights: [
-      'Near-field launch noise characterization',
       'Community-scale infrasound propagation',
-      'Frequency weighting & noise metrics',
-      'ML-based acoustic event detection',
+      'Frequency weighting & community noise metrics',
       'Ground & structural response measurement',
     ],
-    icon: '🚀',
     color: 'navy',
   },
   {
@@ -29,7 +26,6 @@ const areas = [
       'Flow visualization inside instruments',
       'Mouthpiece pressure analysis',
     ],
-    icon: '🎵',
     color: 'gold',
   },
 ];
@@ -38,29 +34,21 @@ const grants = [
   {
     funder: 'National Science Foundation',
     title: 'NSF RUI: Undergraduate Research in Acoustics',
-    role: 'Principal Investigator',
-    total: '$750,000',
     years: '2021–2024',
   },
   {
     funder: 'National Science Foundation',
     title: 'NSF SPACE Supplement: Undergraduate Research in Acoustics',
-    role: 'Principal Investigator',
-    total: '$76,623',
     years: '2023–2024',
   },
   {
     funder: 'City of Cape Canaveral',
     title: 'Rocket Noise Measurement Campaign',
-    role: 'Principal Investigator',
-    total: '$13,000',
     years: '2025–2026',
   },
   {
     funder: 'Rollins College',
     title: 'Critchfield Research Grant: Final Phase of Rocket Launch Noise Monitoring',
-    role: 'Principal Investigator',
-    total: '$5,000',
     years: '2026',
   },
 ];
@@ -73,9 +61,8 @@ const grants = [
       <div class="page-eyebrow">Coyle Acoustics Research Lab</div>
       <h1 class="page-title">Research</h1>
       <p class="page-sub">
-        Two distinct research programs — united by a commitment to careful measurement,
-        real field data, and undergraduate researchers who do the work alongside us.
-      </p>
+  From the launch pad to the practice room — real field data, real students, real science.
+</p>
     </div>
   </section>
 
@@ -110,21 +97,15 @@ const grants = [
     <div class="container">
       <h2 class="section-title" style="margin-bottom: 6px;">Grants & funding</h2>
       <p class="grants-sub">External and internal funding supporting CARL research and undergraduate participation.</p>
-      <div class="grants-list">
-        {grants.map(g => (
-          <div class="grant-card">
-            <div class="grant-left">
-              <div class="grant-funder">{g.funder}</div>
-              <div class="grant-title">{g.title}</div>
-              <div class="grant-role">{g.role}</div>
-            </div>
-            <div class="grant-right">
-              <div class="grant-total">{g.total}</div>
-              <div class="grant-years">{g.years}</div>
-            </div>
-          </div>
-        ))}
-      </div>
+<div class="grants-list">
+  {grants.map(g => (
+    <div class="grant-card">
+      <div class="grant-funder">{g.funder}</div>
+      <div class="grant-title">{g.title}</div>
+      <div class="grant-years">{g.years}</div>
+    </div>
+  ))}
+</div>
     </div>
   </section>
 
@@ -188,22 +169,19 @@ const grants = [
 
   /* GRANTS */
   .grants-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; font-style: italic; }
-  .grants-list { display: flex; flex-direction: column; gap: 0; }
-  .grant-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    padding: 18px 0;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .grant-card:last-child { border-bottom: none; }
-  .grant-funder { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 5px; }
-  .grant-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
-  .grant-role { font-size: 12px; color: var(--text-muted); }
-  .grant-right { text-align: right; flex-shrink: 0; }
-  .grant-total { font-size: 18px; font-weight: 700; color: var(--navy); }
-  .grant-years { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.grants-list { display: flex; flex-direction: column; gap: 0; }
+.grant-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.grant-card:last-child { border-bottom: none; }
+.grant-funder { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-muted); min-width: 180px; }
+.grant-title { font-size: 14px; font-weight: 600; color: var(--navy); flex: 1; line-height: 1.4; }
+.grant-years { font-size: 12px; color: var(--text-muted); flex-shrink: 0; }
 </style>
 
 <style>
