@@ -36,7 +36,7 @@ const signatureCourses = [
       <div class="page-eyebrow">Dr. Whitney L. Coyle · Rollins College</div>
       <h1 class="page-title">Teaching</h1>
       <p class="page-sub">
-        Associate Professor of Physics and Chair of the Physics Department at Rollins College.
+        I am an Associate Professor of Physics and Chair of the Physics Department at Rollins College.
         I teach across the physics curriculum — from introductory labs to classical mechanics —
         with a focus on project-based learning, interdisciplinary connections, and undergraduate research.
       </p>
@@ -47,40 +47,20 @@ const signatureCourses = [
   </section>
 
   <section class="section section-alt">
-    <div class="container bio-grid">
-      <div class="bio-text">
-        <h2 class="section-title">Background</h2>
-        <p class="bio-p">
-          I came to physics through music. My undergraduate degree was a double major in
-          Music (Clarinet Performance) and Mathematics at Murray State University — which is
-          exactly how I ended up studying the acoustics of clarinets for my Ph.D. at Penn State,
-          where I was an NSF Graduate Research Fellow.
-        </p>
-        <p class="bio-p">
-          I joined Rollins College in 2015 and have built a research program that spans
-          musical acoustics and rocket launch noise — two very different sound sources with
-          a lot of interesting physics in common. I believe undergraduate students can and
-          should do real, publishable research, and I've worked hard to make that happen here.
-        </p>
-      </div>
-      <div class="bio-stats">
-        <div class="stat-card">
-          <div class="stat-num">2026</div>
-          <div class="stat-label">R. Bruce Lindsay Award, Acoustical Society of America</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">Ph.D.</div>
-          <div class="stat-label">Acoustics, Penn State · NSF Graduate Research Fellow</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">B.S.</div>
-          <div class="stat-label">Music (Clarinet) & Mathematics, Murray State</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">2025–</div>
-          <div class="stat-label">Chair, Department of Physics, Rollins College</div>
-        </div>
-      </div>
+    <div class="container">
+      <h2 class="section-title">Background</h2>
+      <p class="bio-p">
+        I came to physics through music. My undergraduate degree was a double major in
+        Music (Clarinet Performance) and Mathematics at Murray State University — which is
+        exactly how I ended up studying the acoustics of clarinets for my Ph.D. at Penn State,
+        where I was an NSF Graduate Research Fellow.
+      </p>
+      <p class="bio-p">
+        I joined Rollins College in 2015 and have built a research program that spans
+        musical acoustics and rocket launch noise — two very different sound sources with
+        a lot of interesting physics in common. I believe undergraduate students can and
+        should do real, publishable research, and I've worked hard to make that happen here.
+      </p>
     </div>
   </section>
 
@@ -107,7 +87,7 @@ const signatureCourses = [
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title" style="margin-bottom: 6px;">Signature courses</h2>
-      <p class="section-note" style="margin-bottom: 24px;">Original courses conceived, designed, and developed by Dr. Coyle — from curriculum to classroom.</p>
+      <p class="section-note" style="margin-bottom: 24px;">Original courses conceived, designed, and developed from curriculum to classroom.</p>
       <div class="sig-grid">
         {signatureCourses.map(c => (
           <div class="sig-card">
@@ -124,7 +104,7 @@ const signatureCourses = [
     <div class="container cta-inner">
       <div>
         <div class="cta-title">Questions about courses or research?</div>
-        <div class="cta-sub">Dr. Whitney L. Coyle · wcoyle@rollins.edu</div>
+        <div class="cta-sub">wcoyle@rollins.edu</div>
       </div>
       <div class="cta-btns">
         <a href="mailto:wcoyle@rollins.edu" class="btn-gold">Send an email</a>
@@ -147,12 +127,7 @@ const signatureCourses = [
   }
   .dept-badge:hover { border-color: var(--gold); }
 
-  .bio-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 48px; align-items: start; }
-  .bio-p { font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 16px; }
-  .bio-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .stat-card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 16px; }
-  .stat-num { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
-  .stat-label { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+  .bio-p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 16px; max-width: 720px; }
 
   .section-note { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
   .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
@@ -186,14 +161,11 @@ const signatureCourses = [
 
   @media (max-width: 768px) {
     .page-title { font-size: 30px; }
-    .bio-grid { grid-template-columns: 1fr; }
-    .bio-stats { grid-template-columns: 1fr 1fr; }
     .courses-grid { grid-template-columns: 1fr 1fr; }
     .sig-grid { grid-template-columns: 1fr; }
     .cta-inner { flex-direction: column; }
   }
   @media (max-width: 480px) {
     .courses-grid { grid-template-columns: 1fr; }
-    .bio-stats { grid-template-columns: 1fr; }
   }
 </style>
