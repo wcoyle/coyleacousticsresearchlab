@@ -4,16 +4,44 @@ import Layout from '../layouts/Layout.astro';
 const pi = {
   initials: 'WC',
   name: 'Dr. Whitney L. Coyle',
-  role: 'Associate Professor of Physics· Principal Investigator',
+  role: 'Associate Professor of Physics · Principal Investigator',
   bio: 'Ph.D. in Acoustics, Penn State (NSF Graduate Research Fellow). B.S. in Music (Clarinet) and Mathematics, Murray State. 2026 R. Bruce Lindsay Award, Acoustical Society of America. I came to physics through music — and I\'ve never left either one behind.',
   email: 'wcoyle@rollins.edu',
 };
 
 const members = [
-  { initials: 'HW', name: 'Hunter', role: 'Graduating Senior · Team Lead', area: 'Rocket acoustics' },
-  { initials: 'NM', name: 'Nick', role: 'Undergraduate Researcher', area: 'Acoustics' },
-  { initials: 'LM', name: 'Laura', role: 'Undergraduate Researcher', area: 'Acoustics' },
-  { initials: 'ZM', name: 'Zai', role: 'Undergraduate Researcher', area: 'Acoustics' },
+  {
+    initials: 'HW',
+    name: 'Hunter',
+    role: 'Graduating Senior · Team Lead',
+    area: 'Rocket acoustics',
+    bio: '[Hunter has been with CARL since X year and has led field campaigns at Cape Canaveral. Add a sentence about his work here.]',
+    future: '[Hunter plans to pursue X after graduation. Add his goals here.]',
+  },
+  {
+    initials: 'NM',
+    name: 'Nick',
+    role: 'Undergraduate Researcher',
+    area: 'Acoustics',
+    bio: '[Nick joined CARL in X year and works on X. Add a sentence about his research here.]',
+    future: '[Nick is interested in X after graduation. Add his goals here.]',
+  },
+  {
+    initials: 'LM',
+    name: 'Laura',
+    role: 'Undergraduate Researcher',
+    area: 'Acoustics',
+    bio: '[Laura joined CARL in X year and works on X. Add a sentence about her research here.]',
+    future: '[Laura is interested in X after graduation. Add her goals here.]',
+  },
+  {
+    initials: 'ZM',
+    name: 'Zai',
+    role: 'Undergraduate Researcher',
+    area: 'Acoustics',
+    bio: '[Zai joined CARL in X year and works on X. Add a sentence about their research here.]',
+    future: '[Zai is interested in X after graduation. Add their goals here.]',
+  },
 ];
 
 const alumni = [
@@ -66,19 +94,44 @@ const alumni = [
   <!-- CURRENT MEMBERS -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title" style="margin-bottom: 24px;">Current members</h2>
+      <h2 class="section-title" style="margin-bottom: 8px;">Current members</h2>
+      <p class="members-hint">Click any card to learn more.</p>
       <div class="member-grid">
         {members.map(m => (
-          <div class={`member-card ${m.name.includes('Hunter') ? 'member-lead' : ''}`}>
+          <button
+            class={`member-card ${m.name.includes('Hunter') ? 'member-lead' : ''}`}
+            data-name={m.name}
+            data-role={m.role}
+            data-area={m.area}
+            data-bio={m.bio}
+            data-future={m.future}
+            data-initials={m.initials}
+            onclick="openModal(this)"
+          >
             <div class="member-avatar">{m.initials}</div>
             <div class="member-name">{m.name}</div>
             <div class="member-role">{m.role}</div>
             <div class="member-area">{m.area}</div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
   </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-avatar" id="modal-initials"></div>
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-role" id="modal-role"></div>
+      <div class="modal-divider"></div>
+      <div class="modal-label">About</div>
+      <p class="modal-bio" id="modal-bio"></p>
+      <div class="modal-label">Future plans</div>
+      <p class="modal-future" id="modal-future"></p>
+    </div>
+  </div>
 
   <!-- ALUMNI -->
   <section class="section section-alt">
@@ -142,6 +195,27 @@ const alumni = [
 </Layout>
 
 <script>
+  // Modal
+  function openModal(card) {
+    document.getElementById('modal-initials').textContent = card.dataset.initials;
+    document.getElementById('modal-name').textContent = card.dataset.name;
+    document.getElementById('modal-role').textContent = card.dataset.role;
+    document.getElementById('modal-bio').textContent = card.dataset.bio;
+    document.getElementById('modal-future').textContent = card.dataset.future;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Slider
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
   let current = 0;
@@ -157,7 +231,6 @@ const alumni = [
   document.getElementById('prev')?.addEventListener('click', () => goTo(current - 1));
   document.getElementById('next')?.addEventListener('click', () => goTo(current + 1));
   dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.index))));
-
   setInterval(() => goTo(current + 1), 5000);
 </script>
 
@@ -182,13 +255,55 @@ const alumni = [
   }
   .btn-outline-dark:hover { border-color: var(--navy); }
 
+  .members-hint { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; font-style: italic; }
+
   .member-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .member-card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 22px; text-align: center; }
+  .member-card {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 22px; text-align: center;
+    cursor: pointer; transition: transform 0.15s, border-color 0.15s;
+    font-family: inherit; width: 100%;
+  }
+  .member-card:hover { transform: translateY(-2px); border-color: var(--gold); }
   .member-lead { border-top: 3px solid var(--gold); }
   .member-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 14px; font-weight: 700; color: var(--gold); border: 2px solid var(--gold); }
   .member-name { font-size: 14px; font-weight: 600; color: var(--navy); }
   .member-role { font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
   .member-area { font-size: 11px; color: var(--gold-muted); margin-top: 6px; font-style: italic; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55); z-index: 200;
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 36px; max-width: 420px; width: 100%;
+    position: relative; text-align: center;
+    border-top: 3px solid var(--gold);
+  }
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; font-size: 16px;
+    color: var(--text-muted); cursor: pointer; line-height: 1;
+  }
+  .modal-close:hover { color: var(--navy); }
+  .modal-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); color: var(--gold);
+    font-size: 16px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px; border: 2px solid var(--gold);
+  }
+  .modal-name { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .modal-role { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+  .modal-divider { width: 40px; height: 1px; background: var(--border); margin: 16px auto; }
+  .modal-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 6px; text-align: left; }
+  .modal-bio { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; text-align: left; }
+  .modal-future { font-size: 14px; color: var(--text-muted); line-height: 1.75; text-align: left; }
 
   .alumni-note { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; font-style: italic; }
   .alumni-list { display: flex; flex-direction: column; }
@@ -219,5 +334,6 @@ const alumni = [
     .alumni-item { flex-direction: column; align-items: flex-start; gap: 3px; }
     .alumni-now { text-align: left; }
     .slide-img { height: 260px; }
+    .modal { padding: 28px 20px; }
   }
 </style>
