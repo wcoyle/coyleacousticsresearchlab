@@ -15,8 +15,8 @@ const members = [
     name: 'Hunter',
     role: 'Graduating Senior · Team Lead',
     area: 'Rocket acoustics',
-    bio: '[Hunter has been with CARL since X year and has led field campaigns at Cape Canaveral. Add a sentence about his work here.]',
-    future: '[Hunter plans to pursue X after graduation. Add his goals here.]',
+    bio: 'Hunter has been with CARL 2 years and has led field campaigns at Cape Canaveral.',
+    future: 'Hunter plans to pursue a job in industry after graduation.',
   },
   {
     initials: 'NM',
@@ -49,10 +49,10 @@ const alumni = [
   { name: 'Makayle Kellison', year: '2022–24', now: 'Ph.D. candidate in Applied Physics, Brigham Young University' },
   { name: 'Lauren Schefter', year: '2023–25', now: 'Pursuing M.Arch., University of Virginia' },
   { name: 'Evangelina Wong', year: '2020–22', now: 'Ph.D. candidate in Medical Physics, Duke University' },
-  { name: 'Connor Kaplan', year: '2020–22', now: '' },
+  { name: 'Connor Kaplan', year: '2020–22', now: 'Math instructor, University Instructors, Virginia' },
   { name: 'Jack Gabriel', year: '2018–21', now: 'Ph.D. in Particle Physics, College of William &amp; Mary' },
-  { name: 'Camille Adkison', year: '2018–19', now: '' },
-  { name: 'James Temple', year: '2022', now: '' },
+  { name: 'Camille Adkison', year: '2018–19', now: 'MS in Oceanography, Univ. of Hawaii at Monoa, Honolulu, Hawaii' },
+  { name: 'James Temple', year: '2022', now: 'Database Developer, Massey Services Inc.' },
   { name: 'Carter Richard', year: '2016–18', now: '' },
   { name: 'Caitlin Richard', year: '2016', now: '' },
 ];
@@ -106,7 +106,6 @@ const alumni = [
             data-bio={m.bio}
             data-future={m.future}
             data-initials={m.initials}
-            onclick="openModal(this)"
           >
             <div class="member-avatar">{m.initials}</div>
             <div class="member-name">{m.name}</div>
@@ -196,24 +195,27 @@ const alumni = [
 
 <script>
   // Modal
-  function openModal(card) {
-    document.getElementById('modal-initials').textContent = card.dataset.initials;
-    document.getElementById('modal-name').textContent = card.dataset.name;
-    document.getElementById('modal-role').textContent = card.dataset.role;
-    document.getElementById('modal-bio').textContent = card.dataset.bio;
-    document.getElementById('modal-future').textContent = card.dataset.future;
-    document.getElementById('modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  document.querySelectorAll('.member-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.getElementById('modal-initials').textContent = card.dataset.initials;
+      document.getElementById('modal-name').textContent = card.dataset.name;
+      document.getElementById('modal-role').textContent = card.dataset.role;
+      document.getElementById('modal-bio').textContent = card.dataset.bio;
+      document.getElementById('modal-future').textContent = card.dataset.future;
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
 
   function closeModal() {
     document.getElementById('modal-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
+  document.getElementById('modal-overlay')?.addEventListener('click', closeModal);
+  document.querySelector('.modal-close')?.addEventListener('click', closeModal);
+  document.querySelector('.modal')?.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   // Slider
   const slides = document.querySelectorAll('.slide');
