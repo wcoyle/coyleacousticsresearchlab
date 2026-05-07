@@ -5,7 +5,7 @@ const pi = {
   initials: 'WC',
   name: 'Dr. Whitney L. Coyle',
   role: 'Associate Professor of Physics · Principal Investigator',
-bio: 'Dr. Coyle has been at Rollins College since 2015, where she teaches physics and serves as Chair of the Physics Department. She earned her Ph.D. in Acoustics from Penn State as an NSF Graduate Research Fellow and her B.S. in Music (Clarinet) and Mathematics from Murray State. During her doctoral work she collaborated with researchers in France, deepening her expertise in musical acoustics and instrument modeling. Her research spans rocket launch acoustics and musical acoustics — two very different sound sources bound together by rigorous field work, careful data analysis, and undergraduate collaboration. Outside the lab, she enjoys running long distances (having completed 39 half marathons, 7 full marathons) and spending time with her husband and two daughters.',
+  bio: 'Dr. Coyle has been at Rollins College since 2015, where she teaches physics and serves as Chair of the Physics Department. She earned her Ph.D. in Acoustics from Penn State as an NSF Graduate Research Fellow and her B.S. in Music (Clarinet) and Mathematics from Murray State. During her doctoral work she collaborated with researchers in France, deepening her expertise in musical acoustics and instrument modeling. Her research spans rocket launch acoustics and musical acoustics — two very different sound sources bound together by rigorous field work, careful data analysis, and undergraduate collaboration. Outside the lab, she enjoys playing bass clarinet with various groups around Orlando, running long distances (having completed 39 half marathons, 7 full marathons) and spending time with her husband and two daughters.',
   email: 'wcoyle@rollins.edu',
 };
 
@@ -17,41 +17,45 @@ const members = [
     area: 'Rocket acoustics',
     bio: 'Hunter has been with CARL 2 years and has led field campaigns at Cape Canaveral.',
     future: 'Hunter plans to pursue a job in industry after graduation.',
+    photo: '/images/hunter.jpg',
   },
   {
     initials: 'NM',
     name: 'Nick',
     role: 'Undergraduate Researcher',
     area: 'Acoustics',
-    bio: '[Nick joined CARL in X year and works on X. Add a sentence about his research here.]',
-    future: '[Nick is interested in X after graduation. Add his goals here.]',
+    bio: 'Nick joined CARL in 2025 and works on the structural response to rocket launch noise.',
+    future: 'Nick is interested in architecture after graduation.',
+    photo: '/images/nick.jpg',
   },
   {
     initials: 'LM',
     name: 'Laura',
     role: 'Undergraduate Researcher',
     area: 'Acoustics',
-    bio: '[Laura joined CARL in X year and works on X. Add a sentence about her research here.]',
-    future: '[Laura is interested in X after graduation. Add her goals here.]',
+    bio: 'Laura joined CARL in 2025 and works on sound pressure measurements of rocket launches.',
+    future: 'Laura is interested in graduate study in engineering after finishing at Rollins.',
+    photo: '/images/laura.jpg',
   },
   {
     initials: 'ZM',
     name: 'Zai',
     role: 'Undergraduate Researcher',
     area: 'Acoustics',
-    bio: '[Zai joined CARL in X year and works on X. Add a sentence about their research here.]',
-    future: '[Zai is interested in X after graduation. Add their goals here.]',
+    bio: 'Zai joined CARL in 2025 and her work focuses on rocket noise propagation predictions and air quality measurements.',
+    future: 'Zai is interested in environmental engineering after graduation.',
+    photo: '/images/zai.jpg',
   },
 ];
 
 const alumni = [
-  { name: 'Max Griffin', year: '2023–25', now: '' },
+  { name: 'Max Griffin', year: '2023–25', now: 'Pursuing work in audio engineering applications' },
   { name: 'Makayle Kellison', year: '2022–24', now: 'Ph.D. candidate in Applied Physics, Brigham Young University' },
   { name: 'Lauren Schefter', year: '2023–25', now: 'Pursuing M.Arch., University of Virginia' },
   { name: 'Evangelina Wong', year: '2020–22', now: 'Ph.D. candidate in Medical Physics, Duke University' },
   { name: 'Connor Kaplan', year: '2020–22', now: 'Math instructor, University Instructors, Virginia' },
   { name: 'Jack Gabriel', year: '2018–21', now: 'Ph.D. in Particle Physics, College of William &amp; Mary' },
-  { name: 'Camille Adkison', year: '2018–19', now: 'MS in Oceanography, Univ. of Hawaii at Monoa, Honolulu, Hawaii' },
+  { name: 'Camille Adkison', year: '2018–19', now: 'MS in Oceanography, Univ. of Hawaii at Manoa, Honolulu, Hawaii' },
   { name: 'James Temple', year: '2022', now: 'Database Developer, Massey Services Inc.' },
   { name: 'Carter Richard', year: '2016–18', now: '' },
   { name: 'Caitlin Richard', year: '2016', now: '' },
@@ -76,7 +80,7 @@ const alumni = [
     <div class="container">
       <h2 class="section-title" style="margin-bottom: 24px;">Principal Investigator</h2>
       <div class="pi-card">
-        <div class="pi-avatar">{pi.initials}</div>
+        <img src="/images/whitney-coyle.jpg" alt="Dr. Whitney L. Coyle" class="pi-photo" />
         <div class="pi-info">
           <div class="pi-name">{pi.name}</div>
           <div class="pi-role">{pi.role}</div>
@@ -106,6 +110,7 @@ const alumni = [
             data-bio={m.bio}
             data-future={m.future}
             data-initials={m.initials}
+            data-photo={m.photo}
           >
             <div class="member-avatar">{m.initials}</div>
             <div class="member-name">{m.name}</div>
@@ -118,10 +123,13 @@ const alumni = [
   </section>
 
   <!-- MODAL -->
-  <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
-    <div class="modal" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-avatar" id="modal-initials"></div>
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-avatar-wrap">
+        <img class="modal-photo" id="modal-photo" src="" alt="" />
+        <div class="modal-avatar" id="modal-initials"></div>
+      </div>
       <div class="modal-name" id="modal-name"></div>
       <div class="modal-role" id="modal-role"></div>
       <div class="modal-divider"></div>
@@ -197,7 +205,21 @@ const alumni = [
   // Modal
   document.querySelectorAll('.member-card').forEach(card => {
     card.addEventListener('click', () => {
-      document.getElementById('modal-initials').textContent = card.dataset.initials;
+      const photo = card.dataset.photo;
+      const modalPhoto = document.getElementById('modal-photo');
+      const modalInitials = document.getElementById('modal-initials');
+
+      if (photo) {
+        modalPhoto.src = photo;
+        modalPhoto.alt = card.dataset.name;
+        modalPhoto.style.display = 'block';
+        modalInitials.style.display = 'none';
+      } else {
+        modalPhoto.style.display = 'none';
+        modalInitials.style.display = 'flex';
+        modalInitials.textContent = card.dataset.initials;
+      }
+
       document.getElementById('modal-name').textContent = card.dataset.name;
       document.getElementById('modal-role').textContent = card.dataset.role;
       document.getElementById('modal-bio').textContent = card.dataset.bio;
@@ -213,7 +235,7 @@ const alumni = [
   }
 
   document.getElementById('modal-overlay')?.addEventListener('click', closeModal);
-  document.querySelector('.modal-close')?.addEventListener('click', closeModal);
+  document.getElementById('modal-close')?.addEventListener('click', closeModal);
   document.querySelector('.modal')?.addEventListener('click', e => e.stopPropagation());
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
@@ -243,7 +265,7 @@ const alumni = [
   .page-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 520px; line-height: 1.75; }
 
   .pi-card { display: flex; gap: 28px; align-items: flex-start; background: var(--white); border: 0.5px solid var(--border); border-top: 3px solid var(--gold); border-radius: var(--radius-md); padding: 28px; }
-  .pi-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--gold); border: 2px solid var(--gold); flex-shrink: 0; }
+  .pi-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--gold); flex-shrink: 0; }
   .pi-name { font-size: 18px; font-weight: 700; color: var(--navy); }
   .pi-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; margin-bottom: 12px; line-height: 1.6; }
   .pi-bio { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
@@ -293,12 +315,14 @@ const alumni = [
     color: var(--text-muted); cursor: pointer; line-height: 1;
   }
   .modal-close:hover { color: var(--navy); }
+  .modal-avatar-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
+  .modal-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--gold); display: none; }
   .modal-avatar {
     width: 56px; height: 56px; border-radius: 50%;
     background: var(--navy); color: var(--gold);
     font-size: 16px; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px; border: 2px solid var(--gold);
+    border: 2px solid var(--gold);
   }
   .modal-name { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
   .modal-role { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
@@ -332,6 +356,7 @@ const alumni = [
   @media (max-width: 768px) {
     .page-title { font-size: 30px; }
     .pi-card { flex-direction: column; }
+    .pi-photo { width: 80px; height: 80px; }
     .member-grid { grid-template-columns: 1fr 1fr; }
     .alumni-item { flex-direction: column; align-items: flex-start; gap: 3px; }
     .alumni-now { text-align: left; }
