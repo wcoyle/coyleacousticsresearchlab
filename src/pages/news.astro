@@ -66,8 +66,9 @@ const posts = [
   <section class="page-hero">
     <div class="container">
       <div class="page-eyebrow">Coyle Acoustics Research Lab</div>
-      <h1 class="page-title">News &amp; updates</h1>
-      <p class="page-sub">Awards, publications, field campaigns, and lab updates.</p>
+<h1 class="page-title">News from CARL</h1>
+<p class="page-sub">Awards, publications, field campaigns, and lab updates.</p>
+<a href="/press" class="press-badge">Media &amp; press coverage ↗</a>
     </div>
   </section>
 
@@ -111,6 +112,9 @@ const posts = [
   .tag-publication  { background: #e6eeff; color: #2a44a0; }
   .tag-field-work   { background: #e6f7ef; color: #1a7a48; }
   .tag-hiring       { background: #f0e6ff; color: #5a2d91; }
+
+  .press-badge {  display: inline-block; margin-top: 16px; font-size: 12px; color: var(--gold); border: 1px solid rgba(234,160,32,0.4); padding: 6px 14px   border-radius: var(--radius-sm)   text-decoration: none; transition: border-color 0.2s;
+  .press-badge:hover { border-color: var(--gold); }
 
   @media (max-width: 768px) {
     .page-title { font-size: 30px; }
