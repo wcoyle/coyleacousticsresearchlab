@@ -85,28 +85,33 @@ const researchAreas = [
     </div>
   </section>
 
-<!-- IN THE NEWS -->
+<!-- FEATURED IN -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">In the news</h2>
-        <a href="/press" class="section-link">See all coverage →</a>
+        <h2 class="section-title">Featured in</h2>
+        <a href="/press" class="section-link">All coverage →</a>
       </div>
       <div class="press-grid">
-        <a href="https://www.thesandspur.org/waveforms-and-wavelengths-navigating-the-spectrum-of-physics-at-rollins/" target="_blank" class="press-card">
-          <div class="press-outlet">The Sandspur · 2026</div>
-          <div class="press-title">"Waveforms and Wavelengths. Navigating the Spectrum of Physics at Rollins."</div>
-          <div class="press-cta">Read article ↗</div>
+        <a href="https://acousticalsociety.org/lindsay-award/" target="_blank" class="press-card">
+          <div class="press-outlet">Acoustical Society of America · 2026</div>
+          <div class="press-title">R. Bruce Lindsay Award — Dr. Whitney L. Coyle</div>
+          <div class="press-cta">Read more ↗</div>
         </a>
         <a href="https://www.rollins.edu/college-of-liberal-arts/news/what-its-like-to-partner-with-your-professor/" target="_blank" class="press-card">
           <div class="press-outlet">Rollins College News · 2025</div>
           <div class="press-title">"What It's Like to Partner with Your Professor"</div>
           <div class="press-cta">Read article ↗</div>
         </a>
-        <a href="https://www.rollins.edu/college-of-liberal-arts/news/cool-class-physics-for-future-presidents/" target="_blank" class="press-card">
-          <div class="press-outlet">Rollins College News · 2024</div>
-          <div class="press-title">"Cool Class - Physics for Future Presidents"</div>
+        <a href="https://www.bbc.com/future/article/20230306-just-how-loud-is-a-rocket-launch" target="_blank" class="press-card">
+          <div class="press-outlet">BBC Future · 2023 · Updated 2024</div>
+          <div class="press-title">"Is SpaceX's Starship the Loudest Ever Rocket?"</div>
           <div class="press-cta">Read article ↗</div>
+        </a>
+        <a href="https://www.cfpublic.org/podcast/are-we-there-yet/2023-02-21/measuring-the-sound-of-rockets-nsyncs-lance-bass-chronicles-the-last-soviet-in-space" target="_blank" class="press-card">
+          <div class="press-outlet">Central Florida Public Media · 2023</div>
+          <div class="press-title">"Measuring the Sound of Rockets" — Are We There Yet?</div>
+          <div class="press-cta">Listen ↗</div>
         </a>
       </div>
     </div>
@@ -249,7 +254,7 @@ object-position: center 15%;
     .research-grid { grid-template-columns: 1fr; }
     .join-cta { padding: 40px 0; }
     .join-title { font-size: 24px; }
-    .press-grid { grid-template-columns: 1fr; }
+    .press-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   }
 
 </style>
