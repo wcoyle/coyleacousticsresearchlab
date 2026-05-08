@@ -1,4 +1,4 @@
----
+ ---
 import Layout from '../layouts/Layout.astro';
 
 const posts = [
@@ -13,7 +13,7 @@ const posts = [
     date: '2026',
     badge: 'Award',
     title: 'Hunter Williams and Max Griffin each receive ASA Robert W. Young Award for Undergraduate Student Research in Acoustics',
-    body: '"The Robert W. Young Award for Undergraduate Student Research in Acoustics, granted by the Acoustical Society of America, supports students pursuing independent research beyond the classroom — from honors theses to experimental demonstrations. Hunter and Max were selected from a national pool of applicants."',
+    body: 'The Robert W. Young Award for Undergraduate Student Research in Acoustics, granted by the Acoustical Society of America, supports students pursuing independent research beyond the classroom — from honors theses to experimental demonstrations. Hunter and Max were selected from a national pool of applicants.',
     link: 'https://acousticalsociety.org/fellowships-and-scholarships/',
   },
   {
@@ -24,69 +24,40 @@ const posts = [
     link: null,
   },
   {
-    date: 'March 2026',
+    date: 'Mar 2026',
     badge: 'Field work',
     title: 'Team deploys sensors at Cape Canaveral ahead of launch window',
     body: 'Our team spent three days in the field deploying a multi-sensor array — including microphones, accelerometers, and ground vibration sensors — ahead of a scheduled launch window near Cape Canaveral. Data collection went smoothly and analysis is ongoing.',
     link: null,
   },
   {
-    date: 'January 2026',
+    date: 'Jan 2026',
     badge: 'Award',
-    title: 'Dr. Coyle receives a Critchfield Research Grant to support final phase of rocket launch noise monitoring',
+    title: 'Dr. Coyle receives Critchfield Research Grant for final phase of rocket launch noise monitoring',
     body: 'Rollins College has awarded Dr. Coyle a Critchfield Research Grant to support the final phase of our rocket launch noise monitoring campaign near Cape Canaveral. This funding supports continued field work and student involvement in the project.',
     link: null,
   },
-    {
+  {
     date: '2025',
     badge: 'Award',
-    title: 'Dr. Coyle receives the Rollins College Cornell Distinguished Faculty Award',
-    body: 'Rollins College has recognized Dr. Coyle with the Cornell Distinguished Faculty Award for Academic Year 2025-26, honoring excellence in teaching, scholarship, and service to the college community.',
+    title: 'Dr. Coyle receives the Cornell Distinguished Faculty Award',
+    body: 'Rollins College has recognized Dr. Coyle with the Cornell Distinguished Faculty Award for 2025, honoring excellence in teaching, scholarship, and service to the college community.',
     link: null,
   },
-    {
-      date: '2025',
-      badge: 'Publication',
-      title: 'New paper published in Acta Acustica on organ flue pipe acoustics',
-      body: 'Coyle, W.L., Schefter, L.K., Cannaday, A.E., Griffin, M., & Rokni, E. (2025). "Comparing classical and empirical end correction models using spatial pressure measurements in flue pipes." Acta Acustica, 9, 71. Undergraduate co-authors Lauren Schefter and Max Griffin contributed to measurements and analysis.',
-      link: 'https://doi.org/10.1051/aacus/2025058',
-    },
-    {
+  {
     date: 'Nov 2025',
-    badge: 'Field work',
+    badge: 'Award',
     title: 'CARL awarded City of Cape Canaveral rocket noise measurement contract',
     body: 'We have been awarded a contract by the City of Cape Canaveral to conduct community-scale acoustic measurements during rocket launches. This work will help the city better understand and manage the noise impact of the Space Coast\'s growing launch frequency on surrounding neighborhoods.',
     link: null,
   },
-    {
-    date: 'Feb 2023',
-    badge: 'Media',
-    title: 'AIP Publishing: "The Roar and Crackle of Artemis 1"',
-    body: 'AIP Publishing featured CARL\'s Artemis-I noise measurements in a research spotlight, highlighting findings that sound levels at all measurement stations exceeded predictions — in some cases by nearly 20 decibels.',
-    link: 'https://publishing.aip.org/publications/latest-content/the-roar-and-crackle-of-artemis-1/',
-  },
   {
-    date: 'Feb 2023',
-    badge: 'Media',
-    title: 'Space.com: "Artemis 1 moon launch was as loud as 40 million bowls of Rice Krispies"',
-    body: 'Space.com covered CARL\'s research on the Artemis-I launch, reporting on the team\'s acoustic measurements from five microphone stations and Dr. Coyle\'s crackling sound findings.',
-    link: 'https://www.space.com/artemis-1-sls-moon-launch-sound-levels',
+    date: '2025',
+    badge: 'Publication',
+    title: 'New paper published in Acta Acustica on organ flue pipe acoustics',
+    body: 'Coyle, W.L., Schefter, L.K., Cannaday, A.E., Griffin, M., & Rokni, E. (2025). "Comparing classical and empirical end correction models using spatial pressure measurements in flue pipes." Acta Acustica, 9, 71. Undergraduate co-authors Lauren Schefter and Max Griffin contributed to measurements and analysis.',
+    link: 'https://doi.org/10.1051/aacus/2025058',
   },
-  {
-    date: 'Feb 2023',
-    badge: 'Podcast',
-    title: 'Across Acoustics (ASA Podcast): "How Loud is NASA\'s Space Launch System?"',
-    body: 'Dr. Coyle was featured on Across Acoustics, the official podcast of the Acoustical Society of America, discussing the team\'s Artemis-I noise measurements and what they reveal about rocket sound generation and propagation.',
-    link: 'https://goodpods.com/podcasts/across-acoustics-230498/how-loud-is-nasas-space-launch-system-30632522',
-  },
-  {
-    date: 'Feb 2023',
-    badge: 'Podcast',
-    title: 'Central Florida Public Media: "Measuring the sound of rockets"',
-    body: 'Dr. Coyle appeared on Central Florida Public Media\'s "Are We There Yet?" podcast to discuss the Artemis-I acoustic study, explaining how microphones across Central Florida captured the historic launch\'s sound levels.',
-    link: 'https://www.cfpublic.org/podcast/are-we-there-yet/2023-02-21/measuring-the-sound-of-rockets-nsyncs-lance-bass-chronicles-the-last-soviet-in-space',
-  },
-
 ];
 ---
 
@@ -95,8 +66,8 @@ const posts = [
   <section class="page-hero">
     <div class="container">
       <div class="page-eyebrow">Coyle Acoustics Research Lab</div>
-      <h1 class="page-title">News & updates</h1>
-      <p class="page-sub">Publications, field campaigns, awards, and lab life.</p>
+      <h1 class="page-title">News &amp; updates</h1>
+      <p class="page-sub">Awards, publications, field campaigns, and lab updates.</p>
     </div>
   </section>
 
@@ -106,7 +77,7 @@ const posts = [
         {posts.map(post => (
           <article class="post-card">
             <div class="post-header">
-              <span class={`tag tag-${post.badge.toLowerCase()}`}>{post.badge}</span>
+              <span class={`tag tag-${post.badge.toLowerCase().replace(' ', '-')}`}>{post.badge}</span>
               <span class="post-date">{post.date}</span>
             </div>
             <h2 class="post-title">{post.title}</h2>
@@ -135,13 +106,11 @@ const posts = [
   .post-link { font-size: 13px; font-weight: 600; color: var(--navy); text-decoration: none; display: inline-block; margin-top: 12px; }
   .post-link:hover { color: var(--gold-muted); }
 
-
   .tag { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; font-weight: 600; }
-  .tag-award       { background: #fdf3dc; color: #c8881a; }
-  .tag-publication { background: #e6eeff; color: #2a44a0; }
-  .tag-field\ work { background: #e6f7ef; color: #1a7a48; }
-  .tag-hiring      { background: #f0e6ff; color: #5a2d91; }
-  .tag-podcast { background: #ede6ff; color: #5a2d91; }
+  .tag-award        { background: #fdf3dc; color: #c8881a; }
+  .tag-publication  { background: #e6eeff; color: #2a44a0; }
+  .tag-field-work   { background: #e6f7ef; color: #1a7a48; }
+  .tag-hiring       { background: #f0e6ff; color: #5a2d91; }
 
   @media (max-width: 768px) {
     .page-title { font-size: 30px; }
